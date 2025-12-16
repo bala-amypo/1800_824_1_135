@@ -2,4 +2,7 @@ package com.example.demo.service;
 
 
 
-public class lo
+public class localservice
+{
+    
+}
