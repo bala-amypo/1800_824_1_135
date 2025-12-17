@@ -8,5 +8,7 @@ public class EventEntity
     private String title;
     private String description;
     private String location;
-    private String 
+    private String category;
+    private String publisher;
+    private 
 }
