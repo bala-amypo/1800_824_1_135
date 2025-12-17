@@ -6,5 +6,6 @@ public class EventEntity
 {
     private Long id;
     private String title;
-    private
+    private String description;
+    private String 
 }
