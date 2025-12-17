@@ -13,4 +13,6 @@ public class EventEntity
     private String publisher;
     private boolean isActive;
     private Timestamp createdAt;
+
+    
 }
