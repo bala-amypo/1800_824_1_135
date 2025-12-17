@@ -20,5 +20,10 @@ public class EventEntity
     private boolean isActive;
     private Timestamp createdAt;
 
+    public void setId(Long id)
+    {
+        
+    }
+
 
 }
