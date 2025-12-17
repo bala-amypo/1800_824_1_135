@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.
+import jakarta.persistence.Entity;
 
 @Entity 
 public class UserEntity
@@ -9,5 +9,6 @@ public class UserEntity
     private String fullName;
     private String email;
     private String password;
-    private 
+    private String role;
+    
 }
