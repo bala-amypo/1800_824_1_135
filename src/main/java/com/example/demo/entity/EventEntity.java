@@ -11,5 +11,5 @@ public class EventEntity
     private String category;
     private String publisher;
     private boolean isActive;
-    private Timestamp
+    private Timestamp createdAt;
 }
