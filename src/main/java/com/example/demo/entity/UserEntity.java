@@ -62,12 +62,7 @@ public class UserEntity {
         this.role = role; }
 
      
-    public UserEntity(Long id,
-                String fullName,
-                String email,
-                String password,
-                String role,
-                Timestamp createdAt) {
+    public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
 
         this.id = id;
         this.fullName = fullName;
