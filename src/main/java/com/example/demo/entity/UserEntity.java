@@ -46,9 +46,15 @@ public class UserEntity {
     public String getEmail() {
          return email;
           }
-    public String getPassword() { return password; }
-    public String getRole() { return role; }
-    public Timestamp getCreatedAt() { return createdAt; }
+    public String getPassword() {
+         return password;
+          }
+    public String getRole() {
+         return role;
+          }
+    public Timestamp getCreatedAt() {
+         return createdAt;
+          }
 
     public void setId(Long id) { 
         this.id = id;
