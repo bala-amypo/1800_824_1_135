@@ -9,6 +9,6 @@ public interface UserService
     UserEntity registerUser(UserEntity user);
     UserEntity getUserById(Long id);
     List<UserEntity> getAllUsers();
-    UserEntity findByEmail(String Mail);
+    UserEntity findByEmail(String email);
     
 }
