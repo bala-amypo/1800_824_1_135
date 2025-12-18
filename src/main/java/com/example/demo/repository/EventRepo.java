@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 
 
-public class localrepository{
+public class EventRepo
+{
     
 }
