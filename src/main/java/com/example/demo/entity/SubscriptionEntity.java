@@ -20,7 +20,7 @@ public class EventUpdateEntity
     private Long id;
     private String user;
     private String event;
-    private Timestamp createdAt;
+    private Timestamp subscribedAt;
 
     @PrePersist
     public void onCreate() {
@@ -31,34 +31,22 @@ public class EventUpdateEntity
          return id; 
          }
     public String getUser() {
-         return User; 
+         return user; 
          }
-    public String getDescription() {
-         return description;
+    public String getEvent() {
+         return event;
           }
-    public String getLocation() {
-         return location;
-          }
-    public String getCategory() {
-         return category;
-          }
-    public String getPublisher() {
-         return publisher;
-          }
-    public Boolean getIsActive()
-    { 
-    return isActive;
-    }
+    p 
     
-    public Timestamp getCreatedAt() {
-         return createdAt;
+    public Timestamp getSubscribedAt() {
+         return subscribedAt;
           }
     
 
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setTitle(String title) { 
+    public void set(String title) { 
         this.title = title;
          }
     public void setDescription(String description) { 
