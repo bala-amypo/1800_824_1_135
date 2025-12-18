@@ -16,7 +16,7 @@ public class EventEntity
     private String description;
     private String location;
     private String category;
-    // private String publisher;
+    private String publisher;
     private Boolean isActive=true;
     private Timestamp createdAt;
 
@@ -40,10 +40,14 @@ public class EventEntity
     public String getCategory() {
          return category;
           }
+    public String getPublisher() {
+         return publisher;
+          }
     public Boolean getIsActive()
     { 
     return isActive;
     }
+    
     public Timestamp getCreatedAt() {
          return createdAt;
           }
@@ -63,6 +67,9 @@ public class EventEntity
         }
     public void setCategory(String category) { 
         this.category = category; 
+        }
+    public void setPublisher(String publisher) { 
+        this.publisher = publisher; 
         }
     public void setIsActive(Boolean isActive )
     { 
