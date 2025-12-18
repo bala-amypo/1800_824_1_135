@@ -84,6 +84,7 @@ public class EventEntity
         this.description = description;
         this.location = location;
         this.category = category;
+        this.publisher = publisher; 
         this.isActive=isActive;
         this.createdAt = createdAt;
     }
