@@ -20,37 +20,37 @@ public class BroadcastLogEntity
     private String eventUpdate;
     private String subscriber;
     private String deliveryStatus;
-    private Timestamp subscribedAt;
+    private Timestamp sentAt;
 
     @PrePersist
     public void onCreate() {
-        this.subscribedAt = new Timestamp(System.currentTimeMillis());
+        this.sentAt = new Timestamp(System.currentTimeMillis());
     }
 
     public Long getId() {
          return id; 
          }
-    public String getUser() {
-         return user; 
+    public String getEventUpdate() {
+         return eventUpdate; 
          }
-    public String getEvent() {
-         return event;
+    public String getSubscriber() {
+         return subscriber;
           }
     
     
-    public Timestamp getSubscribedAt() {
-         return subscribedAt;
+    public Timestamp getSentAt() {
+         return sentAt;
           }
     
 
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setUser(String user) { 
-        this.user = user;
+    public void setEventUpdate(String eventUpdate) { 
+        this.eventUpdate = eventUpdate;
          }
-    public void setEvent(String event) { 
-        this.event = event;
+    public void setSubscriber(String subscriber) { 
+        this.subscriber = subscriber;
          }
    
      
