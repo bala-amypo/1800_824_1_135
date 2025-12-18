@@ -55,8 +55,8 @@ public class BroadcastLogEntity
     public void setSubscriber(String subscriber) { 
         this.subscriber = subscriber;
          }
-     public void setSubscriber(String subscriber) { 
-        this.subscriber = subscriber;
+     public void setDeliveryStatus(String deliveryStatus) { 
+        this.deliveryStatus = deliveryStatus;
          }
    
      
@@ -66,6 +66,7 @@ public class BroadcastLogEntity
         this.id = id;
         this.eventUpdate = user;
         this.subscriber = subscriber;
+        this.deliveryStatus = deliveryStatus;
         this.subscribedAt = subscribedAt;
          
     }
