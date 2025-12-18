@@ -70,7 +70,7 @@ public class EventEntity
     }
 
      
-    public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
+    public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.fullName = fullName;
@@ -80,8 +80,7 @@ public class EventEntity
         this.isActive=isActive;
         this.createdAt = createdAt;
     }
-     public UserEntity() {
+     public EventEntity() {
     }
-
-
 }
+
