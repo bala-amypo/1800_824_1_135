@@ -18,12 +18,8 @@ public class EventUpdateEntity
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private String location;
-    private String category;
-    private String publisher;
-    private Boolean isActive=true;
+    private String user;
+    private String event;
     private Timestamp createdAt;
 
     @PrePersist
@@ -34,8 +30,8 @@ public class EventUpdateEntity
     public Long getId() {
          return id; 
          }
-    public String getTitle() {
-         return title; 
+    public String getUser() {
+         return User; 
          }
     public String getDescription() {
          return description;
