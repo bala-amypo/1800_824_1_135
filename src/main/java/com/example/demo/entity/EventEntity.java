@@ -40,8 +40,9 @@ public class EventEntity
     public String getRole() {
          return role;
           }
-    public Boolean getisActive()
-    {
+    public Boolean getIsActive()
+    { 
+    return isActive;
     }
     public Timestamp getCreatedAt() {
          return createdAt;
@@ -63,6 +64,10 @@ public class EventEntity
     public void setRole(String role) { 
         this.role = role; 
         }
+    public void setIsActive(Boolean isActive )
+    { 
+        this.isActive=isActive;
+    }
 
      
     public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
@@ -72,6 +77,7 @@ public class EventEntity
         this.email = email;
         this.password = password;
         this.role = role;
+        this.isActive=isActive;
         this.createdAt = createdAt;
     }
      public UserEntity() {
