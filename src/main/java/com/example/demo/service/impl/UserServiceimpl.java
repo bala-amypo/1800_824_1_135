@@ -8,9 +8,10 @@ import org.springframework.security.crypto.password.PasswordEncounter;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-public class UserServiceimpl
+@Service 
+public class UserServiceimpl implements UserService
 {
-    
+    private final UserRepo userRepo;
 
 
 }
