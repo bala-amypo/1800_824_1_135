@@ -17,7 +17,12 @@ public class UserServiceImpl implements UserService
     {
         this.userRepo=userRepo;
         this.passwordEncounter=passwordEncounter;
-        
+
+    }
+    @Override
+    public UserEntity registerUser(UserEntity user)
+    {
+    if()
     }
 
 
