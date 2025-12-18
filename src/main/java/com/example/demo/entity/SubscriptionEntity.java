@@ -55,13 +55,13 @@ public class SubscriptionEntity
    
      
      
-    public EventUpdateEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public SubscriptionEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.user = user;
         this.event = event;
         this.subscribedAt = subscribedAt;
     }
-     public EventUpdateEntity() {
+     public SubscriptionEntity() {
     }
 }
