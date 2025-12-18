@@ -59,7 +59,7 @@ public class EventUpdateEntity
 
         this.id = id;
          
-        this.subscribedAt = createdAt;
+        this.subscribedAt = subscribedAt;
     }
      public EventUpdateEntity() {
     }
