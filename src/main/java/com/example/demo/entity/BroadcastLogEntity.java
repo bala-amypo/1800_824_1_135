@@ -36,6 +36,9 @@ public class BroadcastLogEntity
     public String getSubscriber() {
          return subscriber;
           }
+    public String getDeliveryStatus() {
+         return deliveryStatus;
+    }
     
     
     public Timestamp getSentAt() {
@@ -52,6 +55,9 @@ public class BroadcastLogEntity
     public void setSubscriber(String subscriber) { 
         this.subscriber = subscriber;
          }
+     public void setSubscriber(String subscriber) { 
+        this.subscriber = subscriber;
+         }
    
      
      
@@ -59,8 +65,9 @@ public class BroadcastLogEntity
 
         this.id = id;
         this.eventUpdate = user;
-        this.event = event;
-        this.sentAt = sentAt;
+        this.subscriber = subscriber;
+        this.subscribedAt = subscribedAt;
+         
     }
      public SubscriptionEntity() {
     }
