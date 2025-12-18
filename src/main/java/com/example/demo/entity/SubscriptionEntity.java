@@ -24,7 +24,7 @@ public class SubscriptionEntity
 
     @PrePersist
     public void onCreate() {
-        this.subcribedAt = new Timestamp(System.currentTimeMillis());
+        this.subscribedAt = new Timestamp(System.currentTimeMillis());
     }
 
     public Long getId() {
