@@ -16,7 +16,7 @@ public class EventEntity
     private String description;
     private String location;
     private String category;
-    private String publisher;
+    // private String publisher;
     private Boolean isActive=true;
     private Timestamp createdAt;
 
@@ -62,7 +62,7 @@ public class EventEntity
         this.location = location; 
         }
     public void setCategory(String category) { 
-        this.role = role; 
+        this.category = category; 
         }
     public void setIsActive(Boolean isActive )
     { 
@@ -73,10 +73,10 @@ public class EventEntity
     public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
-        this. = fullName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.category = category;
         this.isActive=isActive;
         this.createdAt = createdAt;
     }
