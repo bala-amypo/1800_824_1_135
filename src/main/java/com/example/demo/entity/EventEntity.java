@@ -17,7 +17,7 @@ public class EventEntity
     private String location;
     private String category;
     private String publisher;
-    private boolean isActive;
+    private Boolean isActive=true;
     private Timestamp createdAt;
 
     @PrePersist
