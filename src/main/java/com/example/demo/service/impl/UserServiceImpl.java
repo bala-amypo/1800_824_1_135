@@ -13,7 +13,11 @@ public class UserServiceImpl implements UserService
 {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
-    public UserServic
+    public UserServiceImpl(UserRepo userRepo, PasswordEncounter passwordEncounter)
+    {
+        this.userRepo=userRepo;
+        this.passwordEncounter=passwordEncounter;
+    }
 
 
 }
