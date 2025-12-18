@@ -13,10 +13,10 @@ public class UserServiceImpl implements UserService
 {
     private final UserRepo userRepo;
     //private final PasswordEncoder passwordEncoder;
-    public UserServiceImpl(UserRepo userRepo, PasswordEncoder passwordEncoder)
+    public UserServiceImpl(UserRepo userRepo) //PasswordEncoder passwordEncoder)
     {
         this.userRepo=userRepo;
-        this.passwordEncoder=passwordEncoder;
+        //this.passwordEncoder=passwordEncoder;
 
     }
     //method1
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService
     {
         throw new IllegalArgumentException("Email already exists");
         }
-        user.setPassword(passwordEncoder.encoder(user.getPassword()));
+      //  user.setPassword(passwordEncoder.encoder(user.getPassword()));
         return userRepo.save(user);
     }
     //method2
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService
     //method3
     
     @Override
-    public List<userEntity> getAllUsers()
+    public List<UserEntity> getAllUsers()
     {
         return userRepo.findAll();
     } 
