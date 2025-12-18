@@ -55,12 +55,12 @@ public class BroadcastLogEntity
    
      
      
-    public SubscriptionEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public SubscriptionEntity(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
 
         this.id = id;
-        this.user = user;
+        this.eventUpdate = user;
         this.event = event;
-        this.subscribedAt = subscribedAt;
+        this.sentAt = sentAt;
     }
      public SubscriptionEntity() {
     }
