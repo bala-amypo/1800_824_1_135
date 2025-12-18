@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService
         this.passwordEncounter=passwordEncounter;
 
     }
+    //method1
     @Override
     public UserEntity registerUser(UserEntity user)
     {
@@ -29,6 +30,11 @@ public class UserServiceImpl implements UserService
         user.setPassword(passwordEncoder.encoder(user.getPassword()));
         return userRepo.save(user);
     }
+    //method2
+    @Override
+    public UserEntity getUserById(Long id)
+    {
+        return userRepo.findById
 
 
 }
