@@ -61,7 +61,7 @@ public class BroadcastLogEntity
    
      
      
-    public SubscriptionEntity(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
+    public BroadcastLogEntity(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
 
         this.id = id;
         this.eventUpdate = user;
@@ -70,6 +70,6 @@ public class BroadcastLogEntity
         this.subscribedAt = subscribedAt;
          
     }
-     public SubscriptionEntity() {
+     public BroadcastLogEntity() {
     }
 }
