@@ -28,17 +28,17 @@ public class EventEntity
     public Long getId() {
          return id; 
          }
-    public String getFullName() {
-         return fullName; 
+    public String getTitle() {
+         return Title; 
          }
-    public String getEmail() {
-         return email;
+    public String getDescription() {
+         return description;
           }
-    public String getPassword() {
-         return password;
+    public String getLocation() {
+         return location;
           }
-    public String getRole() {
-         return role;
+    public String getCategory() {
+         return category;
           }
     public Boolean getIsActive()
     { 
@@ -52,16 +52,16 @@ public class EventEntity
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setFullName(String fullName) { 
-        this.fullName = fullName;
+    public void setTitle(String title) { 
+        this.title = title;
          }
-    public void setEmail(String email) { 
-        this.email = email;
+    public void setDescription(String description) { 
+        this.description = description;
          }
-    public void setPassword(String password) { 
-        this.password = password; 
+    public void setLocation(String location) { 
+        this.location = location; 
         }
-    public void setRole(String role) { 
+    public void setCategory(String category) { 
         this.role = role; 
         }
     public void setIsActive(Boolean isActive )
@@ -73,7 +73,7 @@ public class EventEntity
     public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
-        this.fullName = fullName;
+        this. = fullName;
         this.email = email;
         this.password = password;
         this.role = role;
