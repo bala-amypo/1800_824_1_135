@@ -67,7 +67,7 @@ public class BroadcastLogEntity
         this.eventUpdate =eventUpdate;
         this.subscriber = subscriber;
         this.deliveryStatus = deliveryStatus;
-        this.subscribedAt = subscribedAt;
+        this.sentAt = sentAt;
          
     }
      public BroadcastLogEntity() {
