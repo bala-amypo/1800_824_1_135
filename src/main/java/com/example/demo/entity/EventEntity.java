@@ -48,37 +48,25 @@ public class EventEntity
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setEvent(String title) { 
-        this.title = title;
+    public void setEvent(String event) { 
+        this.event = event;
          }
-    public void setDescription(String description) { 
-        this.description = description;
+    public void setUpdateContent(String updateContent) { 
+        this.updateContent = updateContent;
          }
-    public void setLocation(String location) { 
-        this.location = location; 
+    public void setUpdateType(String updateType) { 
+        this.updateType = updateType; 
         }
-    public void setCategory(String category) { 
-        this.category = category; 
-        }
-    public void setPublisher(String publisher) { 
-        this.publisher = publisher; 
-        }
-    public void setIsActive(Boolean isActive )
-    { 
-        this.isActive=isActive;
-    }
+     
 
      
-    public EventEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public EventEntity(Long id, String event, String updateContent, String updateType,Timestamp postedAt) {
 
         this.id = id;
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.category = category;
-        this.publisher = publisher; 
-        this.isActive=isActive;
-        this.createdAt = createdAt;
+        this.event = event;
+        this.updateContent = updateContent;
+        this.updateType = updateType; 
+        this.postedAt = postedAt;
     }
      public EventEntity() {
     }
