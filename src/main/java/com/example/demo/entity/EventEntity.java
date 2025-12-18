@@ -16,51 +16,39 @@ public class EventEntity
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private String location;
-    private String category;
-    private String publisher;
-    private Boolean isActive=true;
-    private Timestamp createdAt;
+    private String event;
+    private String updateContent;
+    private String updateType;
+    private Timestamp postedAt;
 
     @PrePersist
     public void onCreate() {
-        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.postedAt = new Timestamp(System.currentTimeMillis());
     }
 
     public Long getId() {
          return id; 
          }
-    public String getTitle() {
-         return title; 
+    public String getEvent() {
+         return event; 
          }
-    public String getDescription() {
-         return description;
+    public String getUpdateContext() {
+         return updateContent;
           }
-    public String getLocation() {
-         return location;
+    public String getUpdateType() {
+         return updateType;
           }
-    public String getCategory() {
-         return category;
-          }
-    public String getPublisher() {
-         return publisher;
-          }
-    public Boolean getIsActive()
-    { 
-    return isActive;
-    }
     
-    public Timestamp getCreatedAt() {
-         return createdAt;
+    
+    public Timestamp getPostedAt() {
+         return postedAt;
           }
     
 
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setTitle(String title) { 
+    public void setEvent(String title) { 
         this.title = title;
          }
     public void setDescription(String description) { 
