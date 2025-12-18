@@ -46,30 +46,20 @@ public class EventUpdateEntity
     public void setId(Long id) { 
         this.id = id;
          }
-    public void set(String ) { 
-        this.title = title;
+    public void setUser(String user) { 
+        this.user = user;
          }
-    public void setDescription(String description) { 
-        this.description = description;
+    public void setEvent(String event) { 
+        this.event = event;
          }
-    public void setLocation(String location) { 
-        this.location = location; 
-        }
-    public void setCategory(String category) { 
-        this.category = category; 
-        }
+   
      
      
     public EventUpdateEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.category = category;
-        this.publisher = publisher; 
-        this.isActive=isActive;
-        this.createdAt = createdAt;
+         
+        this.subscribedAt = createdAt;
     }
      public EventUpdateEntity() {
     }
