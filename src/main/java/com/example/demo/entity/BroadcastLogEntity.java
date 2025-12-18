@@ -64,7 +64,7 @@ public class BroadcastLogEntity
     public BroadcastLogEntity(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
 
         this.id = id;
-        this.eventUpdate = user;
+        this.eventUpdate =eventUpdate;
         this.subscriber = subscriber;
         this.deliveryStatus = deliveryStatus;
         this.subscribedAt = subscribedAt;
