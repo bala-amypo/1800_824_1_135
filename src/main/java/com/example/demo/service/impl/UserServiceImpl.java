@@ -38,7 +38,15 @@ public class UserServiceImpl implements UserService
         return userRepo.findById(id).orElseThrow(()->new RuntimeException("User not found"));
     }
     @Override
-    public   
+    public List<userEntity> getAllUsers()
+    {
+        return userRepo.findAll();
+    }  
+    @Override
+    public UserEntity findByEmail(String email)
+    {
+        return userRepo.findByEmail(email).orElseThrow()->
+    }
 
 
 }
