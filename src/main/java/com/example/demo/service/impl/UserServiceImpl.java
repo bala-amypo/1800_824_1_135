@@ -22,7 +22,11 @@ public class UserServiceImpl implements UserService
     @Override
     public UserEntity registerUser(UserEntity user)
     {
-    if()
+    if(userRepo.existsByEmail(user.getEmail()))
+    {
+        throw new IllegalArgumentException("Email already exists");
+        
+    }
     }
 
 
