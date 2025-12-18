@@ -33,7 +33,7 @@ public class EventEntity
          return id; 
          }
     public String getTitle() {
-         return Title; 
+         return title; 
          }
     public String getDescription() {
          return description;
@@ -81,7 +81,7 @@ public class EventEntity
     }
 
      
-    public Event Entity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public EventEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.title = title;
