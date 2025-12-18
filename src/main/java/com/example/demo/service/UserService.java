@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface UserService
 {
+    UserEntity registerUser(UserEntity user);
+    UserEntity getUserById(Long id);
+    List<UserEntity> getAllUsers();
+    User
     
 }
