@@ -12,13 +12,14 @@ import java.sql.Timestamp;
 
 
 @Entity
-public class SubscriptionEntity
+public class BroadcastLogEntity
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String user;
-    private String event;
+    private String eventUpdate;
+    private String subscriber;
+    private String deliveryStatus;
     private Timestamp subscribedAt;
 
     @PrePersist
