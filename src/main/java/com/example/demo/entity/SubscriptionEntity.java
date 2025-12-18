@@ -46,7 +46,7 @@ public class EventUpdateEntity
     public void setId(Long id) { 
         this.id = id;
          }
-    public void set(String title) { 
+    public void set(String ) { 
         this.title = title;
          }
     public void setDescription(String description) { 
@@ -58,14 +58,7 @@ public class EventUpdateEntity
     public void setCategory(String category) { 
         this.category = category; 
         }
-    public void setPublisher(String publisher) { 
-        this.publisher = publisher; 
-        }
-    public void setIsActive(Boolean isActive )
-    { 
-        this.isActive=isActive;
-    }
-
+     
      
     public EventUpdateEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
