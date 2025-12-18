@@ -4,7 +4,6 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.repository.UserRepo;
 import com.example.demo.service.UserService;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,11 +11,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService
 {
     private final UserRepo userRepo;
-    //private final PasswordEncoder passwordEncoder;
-    public UserServiceImpl(UserRepo userRepo) //PasswordEncoder passwordEncoder)
+    public UserServiceImpl(UserRepo userRepo) 
     {
         this.userRepo=userRepo;
-        //this.passwordEncoder=passwordEncoder;
+        
 
     }
     //method1
@@ -27,7 +25,6 @@ public class UserServiceImpl implements UserService
     {
         throw new IllegalArgumentException("Email already exists");
         }
-      //  user.setPassword(passwordEncoder.encoder(user.getPassword()));
         return userRepo.save(user);
     }
     //method2
