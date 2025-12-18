@@ -31,10 +31,14 @@ public class UserServiceImpl implements UserService
         return userRepo.save(user);
     }
     //method2
+
     @Override
     public UserEntity getUserById(Long id)
     {
-        return userRepo.findById(id).orElse()
+        return userRepo.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+    }
+    @Override
+    public   
 
 
 }
