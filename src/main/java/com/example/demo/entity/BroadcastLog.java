@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-public class BroadcastLogEntity
+public class BroadcastLog
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -61,7 +61,7 @@ public class BroadcastLogEntity
    
      
      
-    public BroadcastLogEntity(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
+    public BroadcastLog(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
 
         this.id = id;
         this.eventUpdate =eventUpdate;
@@ -70,6 +70,6 @@ public class BroadcastLogEntity
         this.sentAt = sentAt;
          
     }
-     public BroadcastLogEntity() {
+     public BroadcastLog() {
     }
 }
