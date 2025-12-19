@@ -2,7 +2,7 @@ package com.example.demo.service.impl;
 
 
 import com.example.demo.entity.UserEntity;
-import com.example.demo.repository.UserRepo;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.List;
 @Service 
 public class UserServiceImpl implements UserService
 {
-    private final UserRepo userRepo;
-    public UserServiceImpl(UserRepo userRepo) 
+    private final UserRepository userRepo;
+    public UserServiceImpl(UserRepository userRepo) 
     {
         this.userRepo=userRepo;
         
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService
     }
     //method1
     @Override
-    public UserEntity registerUser(UserEntity user)
+    public User registerUser(User user)
     {
     if(userRepo.existsByEmail(user.getEmail()))
     {
@@ -30,21 +30,21 @@ public class UserServiceImpl implements UserService
     //method2
 
     @Override
-    public UserEntity getUserById(Long id)
+    public User getUserById(Long id)
     {
         return userRepo.findById(id).orElseThrow(()->new RuntimeException("User not found"));
     }
     //method3
     
     @Override
-    public List<UserEntity> getAllUsers()
+    public List<User> getAllUsers()
     {
         return userRepo.findAll();
     } 
     //method4 
 
     @Override
-    public UserEntity findByEmail(String email)
+    public User findByEmail(String email)
     {
         return userRepo.findByEmail(email).orElseThrow(()->new RuntimeException("User not found"));
     }
