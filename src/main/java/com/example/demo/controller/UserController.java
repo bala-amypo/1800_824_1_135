@@ -23,17 +23,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public UserEntity register(@RequestBody UserEntity user) {
+    public User register(@RequestBody User user) {
         return userService.registerUser(user);
     }
 
     @GetMapping("/{id}")
-    public UserEntity getUser(@PathVariable Long id) {
+    public User getUser(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @GetMapping
-    public List<UserEntity> getAllUsers() {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 }
