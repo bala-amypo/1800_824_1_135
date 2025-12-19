@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface UserService
 {
-    UserEntity registerUser(UserEntity user);
-    UserEntity getUserById(Long id);
-    List<UserEntity> getAllUsers();
-    UserEntity findByEmail(String email);
+    User registerUser(User user);
+    User getUserById(Long id);
+    List<User> getAllUsers();
+    User findByEmail(String email);
     
 }
