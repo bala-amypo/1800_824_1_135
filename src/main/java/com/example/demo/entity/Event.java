@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-public class EventEntity
+public class Event
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -60,7 +60,7 @@ public class EventEntity
      
 
      
-    public EventEntity(Long id, String event, String updateContent, String updateType,Timestamp postedAt) {
+    public Event(Long id, String event, String updateContent, String updateType,Timestamp postedAt) {
 
         this.id = id;
         this.event = event;
@@ -68,7 +68,7 @@ public class EventEntity
         this.updateType = updateType; 
         this.postedAt = postedAt;
     }
-     public EventEntity() {
+     public Event() {
     }
 }
 
