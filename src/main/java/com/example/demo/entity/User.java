@@ -11,7 +11,7 @@ import jakarta.persistence.PrePersist;
 import java.sql.Timestamp;
 
 @Entity
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,7 +73,7 @@ public class UserEntity {
         }
 
      
-    public UserEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
+    public User(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
 
         this.id = id;
         this.fullName = fullName;
@@ -82,6 +82,6 @@ public class UserEntity {
         this.role = role;
         this.createdAt = createdAt;
     }
-     public UserEntity() {
+     public User() {
     }
 }
