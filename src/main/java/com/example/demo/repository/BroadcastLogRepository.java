@@ -3,7 +3,7 @@ import com.example.demo.entity.BroadcastLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface BroadcastLogRepository extends JpaRepository<BroadcastLogEntity,Long>{
+public interface BroadcastLogRepository extends JpaRepository<BroadcastLog,Long>{
 
 
 
