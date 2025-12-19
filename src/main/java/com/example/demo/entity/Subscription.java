@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-public class SubscriptionEntity
+public class Subscription
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -55,13 +55,13 @@ public class SubscriptionEntity
    
      
      
-    public SubscriptionEntity(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public Subscription(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.user = user;
         this.event = event;
         this.subscribedAt = subscribedAt;
     }
-     public SubscriptionEntity() {
+     public Subscription() {
     }
 }
