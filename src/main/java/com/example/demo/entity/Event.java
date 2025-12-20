@@ -50,7 +50,7 @@ public class Event
     public String getCategory() {
          return category;
           }
-    public String getPublisher() {
+    public User getPublisher() {
          return publisher;
           }
     public Boolean getIsActive()
