@@ -87,7 +87,7 @@ public class Event
     }
 
      
-    public Event(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public Event(Long id, String fullName, String email, String password,String role,User publisher,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.title = title;
