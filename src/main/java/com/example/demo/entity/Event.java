@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 
 
@@ -22,6 +22,8 @@ public class Event
     private String description;
     private String location;
     private String category;
+    
+    @ManyToOne
     private String publisher;
     private Boolean isActive=true;
     private Timestamp createdAt;
