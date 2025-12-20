@@ -26,7 +26,7 @@ public class Event
 
     @ManyToOne
     @JoinColumn(name="publisher_id")
-    private String publisher;
+    private User publisher;
     private Boolean isActive=true;
     private Timestamp createdAt;
 
