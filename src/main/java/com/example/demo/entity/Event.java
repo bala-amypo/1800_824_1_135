@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.join
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
 
@@ -25,7 +25,7 @@ public class Event
     private String category;
 
     @ManyToOne
-    @
+    @JoinColumn(name="publisher_id")
     private String publisher;
     private Boolean isActive=true;
     private Timestamp createdAt;
