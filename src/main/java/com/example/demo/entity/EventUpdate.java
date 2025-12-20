@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-public class EventUpdate
+public class Event
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -82,7 +82,7 @@ public class EventUpdate
     }
 
      
-    public EventUpdate(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public Event(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
 
         this.id = id;
         this.title = title;
@@ -93,7 +93,7 @@ public class EventUpdate
         this.isActive=isActive;
         this.createdAt = createdAt;
     }
-     public EventUpdate() {
+     public Event() {
     }
 }
 
