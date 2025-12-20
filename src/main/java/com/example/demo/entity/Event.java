@@ -78,7 +78,7 @@ public class Event
     public void setCategory(String category) { 
         this.category = category; 
         }
-    public void setPublisher(String publisher) { 
+    public void setPublisher(User publisher) { 
         this.publisher = publisher; 
         }
     public void setIsActive(Boolean isActive )
