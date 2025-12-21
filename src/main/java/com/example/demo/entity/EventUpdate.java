@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.ManyToOne;
 
 
 import java.sql.Timestamp;
@@ -16,7 +17,8 @@ public class EventUpdate
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String event;
+    @ManyToOne
+    private Event event;
     private String updateContent;
     private String updateType;
     private Timestamp postedAt;
@@ -29,7 +31,7 @@ public class EventUpdate
     public Long getId() {
          return id; 
          }
-    public String getEvent() {
+    public Event getEvent() {
          return event; 
          }
     public String getUpdateContext() {
@@ -48,7 +50,7 @@ public class EventUpdate
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setEvent(String event) { 
+    public void setEvent(Event event) { 
         this.event = event;
          }
     public void setUpdateContent(String updateContent) { 
@@ -60,7 +62,7 @@ public class EventUpdate
      
 
      
-    public EventUpdate(Long id, String event, String updateContent, String updateType,Timestamp postedAt) {
+    public EventUpdate(Long id, Event event, String updateContent, String updateType,Timestamp postedAt) {
 
         this.id = id;
         this.event = event;
