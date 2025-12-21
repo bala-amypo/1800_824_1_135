@@ -17,8 +17,10 @@ public class BroadcastLog
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String eventUpdate;
-    private String subscriber;
+    @ManyToOne;
+    private EventUpdate eventUpdate;
+    @ManyToOne;
+    private User subscriber;
     private String deliveryStatus;
     private Timestamp sentAt;
 
@@ -30,10 +32,10 @@ public class BroadcastLog
     public Long getId() {
          return id; 
          }
-    public String getEventUpdate() {
+    public EventUpdate getEventUpdate() {
          return eventUpdate; 
          }
-    public String getSubscriber() {
+    public User getSubscriber() {
          return subscriber;
           }
     public String getDeliveryStatus() {
@@ -49,10 +51,10 @@ public class BroadcastLog
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setEventUpdate(String eventUpdate) { 
+    public void setEventUpdate(EventUpdate eventUpdate) { 
         this.eventUpdate = eventUpdate;
          }
-    public void setSubscriber(String subscriber) { 
+    public void setSubscriber(User subscriber) { 
         this.subscriber = subscriber;
          }
      public void setDeliveryStatus(String deliveryStatus) { 
@@ -61,7 +63,7 @@ public class BroadcastLog
    
      
      
-    public BroadcastLog(Long id, String eventUpdate, String subscriber,Timestamp sentAt) {
+    public BroadcastLog(Long id, EventUpdate eventUpdate, User subscriber,Timestamp sentAt) {
 
         this.id = id;
         this.eventUpdate =eventUpdate;
