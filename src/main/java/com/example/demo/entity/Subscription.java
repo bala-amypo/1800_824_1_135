@@ -60,7 +60,7 @@ public class Subscription
    
      
      
-    public Subscription(Long id, User user,Event event,Time){
+    public Subscription(Long id, User user,Event event,Timestamp subscribedAt){
 
         this.id = id;
         this.user = user;
