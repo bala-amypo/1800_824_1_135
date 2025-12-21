@@ -1,7 +1,7 @@
 package com.eaxample.demo.service;
 
 
-public class BroadcastService
+public class SubscriptionService
 {
     
 }
