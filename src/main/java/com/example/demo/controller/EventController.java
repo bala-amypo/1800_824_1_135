@@ -17,7 +17,8 @@ public class EventController {
     }
 
     @PostMapping
-    public Event createEvent(@RequestBody Event event) {
+    public Event createEvent(@RequestBody Event event, @RequestParam Long publisherId) {
+       
         return eventService.createEvent(event);
     }
 
