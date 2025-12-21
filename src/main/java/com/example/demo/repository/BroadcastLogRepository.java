@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface BroadcastLogRepository extends JpaRepository<BroadcastLog,Long>{
 
-      List<BroadcastLog> findByEventUpdatedId(Long eventUpdateId);
+      List<BroadcastLog> findByEventUpdateId(Long eventUpdateId);
 
 }
