@@ -19,8 +19,12 @@ public class Subscription
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String user;
-    private String event;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Event event;
     private Timestamp subscribedAt;
 
     @PrePersist
@@ -31,10 +35,10 @@ public class Subscription
     public Long getId() {
          return id; 
          }
-    public String getUser() {
+    public User getUser() {
          return user; 
          }
-    public String getEvent() {
+    public Event getEvent() {
          return event;
           }
     
@@ -47,16 +51,16 @@ public class Subscription
     public void setId(Long id) { 
         this.id = id;
          }
-    public void setUser(String user) { 
+    public void setUser(User user) { 
         this.user = user;
          }
-    public void setEvent(String event) { 
+    public void setEvent(Event event) { 
         this.event = event;
          }
    
      
      
-    public Subscription(Long id, String fullName, String email, String password,String role,Timestamp createdAt,Boolean isActive) {
+    public Subscription(Long id, User user,Event event,Time){
 
         this.id = id;
         this.user = user;
