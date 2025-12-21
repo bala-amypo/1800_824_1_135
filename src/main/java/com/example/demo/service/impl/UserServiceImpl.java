@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService
     if(userRepo.existsByEmail(user.getEmail()))
     {
         throw new IllegalArgumentException("Email already exists");
-        }
+    }
         return userRepo.save(user);
     }
     //method2
