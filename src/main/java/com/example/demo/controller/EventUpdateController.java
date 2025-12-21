@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.example.demo.controller;
 
 
 
-public class EventUpdateServiceImpl
+public class EventUpdateController
 {
     
 }
