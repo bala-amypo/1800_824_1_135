@@ -17,9 +17,11 @@ public class BroadcastLog
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne;
+
+    @ManyToOne
     private EventUpdate eventUpdate;
-    @ManyToOne;
+
+    @ManyToOne
     private User subscriber;
     private String deliveryStatus;
     private Timestamp sentAt;
