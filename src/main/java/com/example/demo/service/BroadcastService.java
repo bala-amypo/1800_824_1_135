@@ -11,11 +11,27 @@
 //     List<BroadcastLog> getLogsForUpdate(Long updateId);
 // }
 
+// package com.example.demo.service;
+
+// public interface BroadcastService {
+
+//     void broadcastUpdate(Long eventUpdateId);
+
+//     void recordDelivery(Long updateId, Long userId, boolean delivered);
+// }
 package com.example.demo.service;
+
+import java.util.List;
 
 public interface BroadcastService {
 
+    // Already required by tests
     void broadcastUpdate(Long eventUpdateId);
 
     void recordDelivery(Long updateId, Long userId, boolean delivered);
+
+    //  REQUIRED by BroadcastController & EventUpdateServiceImpl
+    void triggerBroadcast(Long eventUpdateId);
+
+    List<String> getLogsForUpdate(Long eventUpdateId);
 }
