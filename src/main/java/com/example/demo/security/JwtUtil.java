@@ -1,58 +1,54 @@
 package com.example.demo.security;
 
-import org.springframework.stereotype.Component;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
-import java.util.Base64;
+import java.util.Date;
 
-@Component
 public class JwtUtil {
 
-    public JwtUtil() {
+    private final String secret;
+    private final long validity;
+
+    public JwtUtil(String secret, long validity) {
+        this.secret = secret;
+        this.validity = validity;
     }
 
-    // =========================
-    // TOKEN GENERATION
-    // =========================
     public String generateToken(Long userId, String email, String role) {
-
-        // Format: userId:email:role
-        String raw = userId + ":" + email + ":" + role;
-
-        return Base64.getEncoder().encodeToString(raw.getBytes());
+        return Jwts.builder()
+                .claim("userId", userId)
+                .claim("role", role)
+                .setSubject(email)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + validity))
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
     }
 
-    // =========================
-    // TOKEN VALIDATION
-    // =========================
     public boolean validateToken(String token) {
         try {
-            Base64.getDecoder().decode(token);
+            getClaims(token);
             return true;
-        } catch (Exception ex) {
+        } catch (Exception e) {
             return false;
         }
     }
 
-    // =========================
-    // INTERNAL DECODER
-    // =========================
-    private String[] decode(String token) {
-        String decoded = new String(Base64.getDecoder().decode(token));
-        return decoded.split(":");
+    private Claims getClaims(String token) {
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
-    // =========================
-    // CLAIM EXTRACTION
-    // =========================
-    public String getEmailFromToken(String token) {
-        return decode(token)[1];
+    public String getUsernameFromToken(String token) {
+        return getClaims(token).getSubject();
     }
 
     public String getRoleFromToken(String token) {
-        return decode(token)[2];
+        return getClaims(token).get("role", String.class);
     }
 
     public Long getUserIdFromToken(String token) {
-        return Long.parseLong(decode(token)[0]);
+        return getClaims(token).get("userId", Long.class);
     }
 }
