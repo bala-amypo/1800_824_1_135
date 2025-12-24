@@ -58,7 +58,7 @@
             <version>2.3.0</version>
         </dependency>
 
-        <!-- 🔥 JWT (FIXED LOCATION) -->
+        <!--  JWT (FIXED LOCATION) -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
