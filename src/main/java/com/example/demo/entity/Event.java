@@ -102,14 +102,121 @@
 //     }
 // }
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.PrePersist;
+// import jakarta.persistence.PreUpdate;
+
+// @Entity
+// public class Event {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private String title;
+//     private String description;
+//     private String location;
+//     private String category;
+
+//     private Boolean isActive = true;
+
+//     private Long createdAt;
+//     private Long lastUpdatedAt;
+
+//     // ================= JPA LIFECYCLE =================
+
+//     @PrePersist
+//     public void onCreate() {
+//         long now = System.currentTimeMillis();
+//         this.createdAt = now;
+//         this.lastUpdatedAt = now;
+//     }
+
+//     // 🔴 TEST EXPECTS onUpdate()
+//     @PreUpdate
+//     public void onUpdate() {
+//         this.lastUpdatedAt = System.currentTimeMillis();
+//     }
+
+//     // ================= GETTERS & SETTERS =================
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public String getTitle() {
+//         return title;
+//     }
+
+//     public void setTitle(String title) {
+//         this.title = title;
+//     }
+
+//     public String getDescription() {
+//         return description;
+//     }
+
+//     public void setDescription(String description) {
+//         this.description = description;
+//     }
+
+//     public String getLocation() {
+//         return location;
+//     }
+
+//     public void setLocation(String location) {
+//         this.location = location;
+//     }
+
+//     public String getCategory() {
+//         return category;
+//     }
+
+//     public void setCategory(String category) {
+//         this.category = category;
+//     }
+
+//     // 🔴 TEST EXPECTS isActive()
+//     public Boolean isActive() {
+//         return isActive;
+//     }
+
+//     // 🔴 TEST EXPECTS setActive(boolean)
+//     public void setActive(Boolean active) {
+//         this.isActive = active;
+//     }
+
+//     public Long getCreatedAt() {
+//         return createdAt;
+//     }
+
+//     public void setCreatedAt(Long createdAt) {
+//         this.createdAt = createdAt;
+//     }
+
+//     // 🔴 TEST EXPECTS getLastUpdatedAt()
+//     public Long getLastUpdatedAt() {
+//         return lastUpdatedAt;
+//     }
+
+//     // 🔴 TEST EXPECTS setLastUpdatedAt(Long)
+//     public void setLastUpdatedAt(Long lastUpdatedAt) {
+//         this.lastUpdatedAt = lastUpdatedAt;
+//     }
+// }
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 public class Event {
@@ -123,27 +230,27 @@ public class Event {
     private String location;
     private String category;
 
-    private Boolean isActive = true;
+    @ManyToOne
+    private User publisher;
 
-    private Long createdAt;
-    private Long lastUpdatedAt;
+    private boolean isActive = true;
 
-    // ================= JPA LIFECYCLE =================
+    private Timestamp createdAt;
+    private Timestamp lastUpdatedAt;
 
     @PrePersist
     public void onCreate() {
-        long now = System.currentTimeMillis();
-        this.createdAt = now;
-        this.lastUpdatedAt = now;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.lastUpdatedAt = this.createdAt;
+        this.isActive = true;
     }
 
-    // 🔴 TEST EXPECTS onUpdate()
     @PreUpdate
     public void onUpdate() {
-        this.lastUpdatedAt = System.currentTimeMillis();
+        this.lastUpdatedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    // ================= GETTERS & SETTERS =================
+    // ===== REQUIRED GETTERS / SETTERS =====
 
     public Long getId() {
         return id;
@@ -153,63 +260,44 @@ public class Event {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    // 🔴 TEST EXPECTS isActive()
-    public Boolean isActive() {
+    public boolean isActive() {
         return isActive;
     }
 
-    // 🔴 TEST EXPECTS setActive(boolean)
-    public void setActive(Boolean active) {
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean active) {
         this.isActive = active;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
+    public User getPublisher() {
+        return publisher;
     }
 
-    public void setCreatedAt(Long createdAt) {
-        this.createdAt = createdAt;
+    public void setPublisher(User publisher) {
+        this.publisher = publisher;
     }
 
-    // 🔴 TEST EXPECTS getLastUpdatedAt()
-    public Long getLastUpdatedAt() {
+    public Timestamp getLastUpdatedAt() {
         return lastUpdatedAt;
     }
 
-    // 🔴 TEST EXPECTS setLastUpdatedAt(Long)
-    public void setLastUpdatedAt(Long lastUpdatedAt) {
+    public void setLastUpdatedAt(Timestamp lastUpdatedAt) {
         this.lastUpdatedAt = lastUpdatedAt;
     }
+
+    // optional but safe
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 }
