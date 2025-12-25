@@ -43,18 +43,32 @@
 //     List<EventUpdate> findByEventId(Long eventId);
 // }
 
+// package com.example.demo.repository;
+
+// import com.example.demo.entity.EventUpdate;
+// import org.springframework.data.jpa.repository.JpaRepository;
+
+// import java.util.List;
+
+// public interface EventUpdateRepository extends JpaRepository<EventUpdate, Long> {
+
+//     // 🔴 REQUIRED BY TESTS
+//     List<EventUpdate> findByEventId(Long eventId);
+
+//     // 🔴 REQUIRED BY TESTS
+//     List<EventUpdate> findByEventIdOrderByTimestampAsc(Long eventId);
+// }
 package com.example.demo.repository;
 
 import com.example.demo.entity.EventUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
 public interface EventUpdateRepository extends JpaRepository<EventUpdate, Long> {
 
-    // 🔴 REQUIRED BY TESTS
+    // 🔴 TEST EXPECTS THIS METHOD
     List<EventUpdate> findByEventId(Long eventId);
 
-    // 🔴 REQUIRED BY TESTS
-    List<EventUpdate> findByEventIdOrderByTimestampAsc(Long eventId);
+    // 🔴 TEST EXPECTS THIS METHOD
+    List<EventUpdate> findAllByOrderByTimestampAsc();
 }
