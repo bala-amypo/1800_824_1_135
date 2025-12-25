@@ -44,57 +44,48 @@
 // }
 
 
- 
+package com.example.demo.service.impl;
 
-package com.example.demo.entity;
+import com.example.demo.entity.EventUpdate;
+import com.example.demo.repository.EventRepository;
+import com.example.demo.repository.EventUpdateRepository;
+import com.example.demo.service.EventUpdateService;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.List;
 
-@Entity
-public class EventUpdate {
+@Service
+public class EventUpdateServiceImpl implements EventUpdateService {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private final EventUpdateRepository updateRepository;
+    private final EventRepository eventRepository;
 
-    @ManyToOne
-    private Event event;
-
-    private Timestamp timestamp;
-
-    public Long getId() {
-        return id;
+    // 🔴 EXACT constructor signature expected by tests
+    public EventUpdateServiceImpl(
+            EventUpdateRepository updateRepository,
+            EventRepository eventRepository
+    ) {
+        this.updateRepository = updateRepository;
+        this.eventRepository = eventRepository;
     }
 
-    public Event getEvent() {
-        return event;
+    // 🔴 TEST EXPECTS Instant (NOT Timestamp, NOT LocalDateTime)
+    @Override
+    public EventUpdate publishUpdate(EventUpdate update) {
+        update.setTimestamp(Instant.now());
+        return updateRepository.save(update);
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    @Override
+    public EventUpdate getUpdateById(Long id) {
+        return updateRepository.findById(id).orElse(null);
     }
 
-    // ✅ THIS IS WHAT LINE 412 EXPECTS
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    // ✅ THIS IS WHAT LINE 412 EXPECTS
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    @PrePersist
-    public void onCreate() {
-        if (this.timestamp == null) {
-            this.timestamp = new Timestamp(System.currentTimeMillis());
-        }
+    // 🔴 TEST EXPECTS ASC order by timestamp
+    @Override
+    public List<EventUpdate> getUpdatesForEvent(Long eventId) {
+        return updateRepository.findByEventIdOrderByTimestampAsc(eventId);
     }
 }
