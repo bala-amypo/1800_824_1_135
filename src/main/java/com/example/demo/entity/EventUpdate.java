@@ -293,3 +293,84 @@
 //         this.timestamp = timestamp;
 //     }
 // }
+
+
+
+package com.example.demo.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+
+import java.time.Instant;
+
+@Entity
+public class EventUpdate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Event event;
+
+    private String content;
+
+    private String severityLevel;
+
+    private Instant timestamp;
+
+    // 🔴 REQUIRED BY TESTS
+    @PrePersist
+    public void onCreate() {
+        this.timestamp = Instant.now();
+    }
+
+    // ===== GETTERS =====
+
+    public Long getId() {
+        return id;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getSeverityLevel() {
+        return severityLevel;
+    }
+
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    // ===== SETTERS =====
+
+    // 🔴 THIS FIXES 5 ERRORS
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setSeverityLevel(String severityLevel) {
+        this.severityLevel = severityLevel;
+    }
+
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
+    }
+}
