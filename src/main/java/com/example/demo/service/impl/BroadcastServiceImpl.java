@@ -112,10 +112,43 @@
 //         return new ArrayList<>();
 //     }
 // }
+// package com.example.demo.service.impl;
+
+// import com.example.demo.entity.BroadcastLog;
+// import com.example.demo.service.BroadcastService;
+// import org.springframework.stereotype.Service;
+
+// import java.util.ArrayList;
+// import java.util.List;
+
+// @Service
+// public class BroadcastServiceImpl implements BroadcastService {
+
+//     @Override
+//     public void broadcastUpdate(Long eventUpdateId) {
+//     }
+
+//     @Override
+//     public void recordDelivery(Long updateId, Long userId, boolean delivered) {
+//     }
+
+//     @Override
+//     public void triggerBroadcast(Long eventUpdateId) {
+//     }
+
+//     @Override
+//     public List<BroadcastLog> getLogsForUpdate(Long eventUpdateId) {
+//         return new ArrayList<>();
+//     }
+// }
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.BroadcastLog;
+import com.example.demo.repository.BroadcastLogRepository;
+import com.example.demo.repository.EventUpdateRepository;
+import com.example.demo.repository.SubscriptionRepository;
 import com.example.demo.service.BroadcastService;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -123,6 +156,21 @@ import java.util.List;
 
 @Service
 public class BroadcastServiceImpl implements BroadcastService {
+
+    private final EventUpdateRepository eventUpdateRepository;
+    private final SubscriptionRepository subscriptionRepository;
+    private final BroadcastLogRepository broadcastLogRepository;
+
+    // 🔴 EXACT constructor tests expect
+    public BroadcastServiceImpl(
+            EventUpdateRepository eventUpdateRepository,
+            SubscriptionRepository subscriptionRepository,
+            BroadcastLogRepository broadcastLogRepository
+    ) {
+        this.eventUpdateRepository = eventUpdateRepository;
+        this.subscriptionRepository = subscriptionRepository;
+        this.broadcastLogRepository = broadcastLogRepository;
+    }
 
     @Override
     public void broadcastUpdate(Long eventUpdateId) {
