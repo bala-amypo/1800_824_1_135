@@ -759,6 +759,81 @@
 // }
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.*;
+// import java.time.Instant;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     private Event event;
+
+//     private Instant timestamp;
+
+//     // 🔴 Fields required ONLY for tests
+//     private Long u1;
+//     private Long u2;
+
+//     @Enumerated(EnumType.STRING)
+//     private SeverityLevel severityLevel;
+
+//     // ================= REQUIRED METHODS =================
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     // 🔴 REQUIRED by tests
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
+
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+
+//     // 🔴 REQUIRED by tests
+//     public void setU1(Long u1) {
+//         this.u1 = u1;
+//     }
+
+//     // 🔴 REQUIRED by tests
+//     public void setU2(Long u2) {
+//         this.u2 = u2;
+//     }
+
+//     // 🔴 REQUIRED by tests
+//     public void setSeverityLevel(SeverityLevel severityLevel) {
+//         this.severityLevel = severityLevel;
+//     }
+
+//     // 🔴 REQUIRED lifecycle method
+//     @PrePersist
+//     public void onCreate() {
+//         if (this.timestamp == null) {
+//             this.timestamp = Instant.now();
+//         }
+//     }
+// }
+
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
@@ -776,7 +851,7 @@ public class EventUpdate {
 
     private Instant timestamp;
 
-    // 🔴 Fields required ONLY for tests
+    // 🔴 REQUIRED ONLY FOR TESTS
     private Long u1;
     private Long u2;
 
@@ -811,13 +886,28 @@ public class EventUpdate {
     }
 
     // 🔴 REQUIRED by tests
+    public Long getU1() {
+        return u1;
+    }
+
+    // 🔴 REQUIRED by tests
     public void setU1(Long u1) {
         this.u1 = u1;
     }
 
     // 🔴 REQUIRED by tests
+    public Long getU2() {
+        return u2;
+    }
+
+    // 🔴 REQUIRED by tests
     public void setU2(Long u2) {
         this.u2 = u2;
+    }
+
+    // 🔴 REQUIRED by tests
+    public SeverityLevel getSeverityLevel() {
+        return severityLevel;
     }
 
     // 🔴 REQUIRED by tests
