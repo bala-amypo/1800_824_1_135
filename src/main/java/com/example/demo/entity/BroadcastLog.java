@@ -1,97 +1,5 @@
  
 
-// package com.example.demo.entity;
-
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.EnumType;
-// import jakarta.persistence.Enumerated;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.ManyToOne;
-// import jakarta.persistence.PrePersist;
-
-// import java.time.Instant;
-
-// @Entity
-// public class BroadcastLog {
-
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
-
-//     // MANY logs → ONE event update
-//     @ManyToOne
-//     @JoinColumn(name = "event_update_id")
-//     private EventUpdate eventUpdate;
-
-//     // MANY logs → ONE subscriber
-//     @ManyToOne
-//     @JoinColumn(name = "subscriber_id")
-//     private User subscriber;
-
-//     @Enumerated(EnumType.STRING)
-//     private DeliveryStatus deliveryStatus;
-
-//     private Instant sentAt;
-
-//     public BroadcastLog() {
-//     }
-
-//     @PrePersist
-//     public void onCreate() {
-//         this.sentAt = Instant.now();
-
-//         // 🔴 REQUIRED by test
-//         if (this.deliveryStatus == null) {
-//             this.deliveryStatus = DeliveryStatus.SENT;
-//         }
-//     }
-
-//     // -------- getters & setters --------
-
-//     public Long getId() {
-//         return id;
-//     }
-
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
-
-//     public EventUpdate getEventUpdate() {
-//         return eventUpdate;
-//     }
-
-//     public void setEventUpdate(EventUpdate eventUpdate) {
-//         this.eventUpdate = eventUpdate;
-//     }
-
-//     public User getSubscriber() {
-//         return subscriber;
-//     }
-
-//     public void setSubscriber(User subscriber) {
-//         this.subscriber = subscriber;
-//     }
-
-//     public DeliveryStatus getDeliveryStatus() {
-//         return deliveryStatus;
-//     }
-
-//     public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
-//         this.deliveryStatus = deliveryStatus;
-//     }
-
-//     public Instant getSentAt() {
-//         return sentAt;
-//     }
-
-//     public void setSentAt(Instant sentAt) {
-//         this.sentAt = sentAt;
-//     }
-// }
-
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
@@ -104,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 public class BroadcastLog {
@@ -113,30 +21,42 @@ public class BroadcastLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // MANY logs → ONE event update
     @ManyToOne
     @JoinColumn(name = "event_update_id")
     private EventUpdate eventUpdate;
 
+    // MANY logs → ONE subscriber
     @ManyToOne
     @JoinColumn(name = "subscriber_id")
     private User subscriber;
 
-    // ✅ DEFAULT REQUIRED BY TEST
     @Enumerated(EnumType.STRING)
-    private DeliveryStatus deliveryStatus = DeliveryStatus.SENT;
+    private DeliveryStatus deliveryStatus;
 
-    private Timestamp sentAt;
+    private Instant sentAt;
 
     public BroadcastLog() {
     }
 
     @PrePersist
     public void onCreate() {
-        this.sentAt = new Timestamp(System.currentTimeMillis());
+        this.sentAt = Instant.now();
+
+        // 🔴 REQUIRED by test
+        if (this.deliveryStatus == null) {
+            this.deliveryStatus = DeliveryStatus.SENT;
+        }
     }
+
+    // -------- getters & setters --------
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public EventUpdate getEventUpdate() {
@@ -163,7 +83,11 @@ public class BroadcastLog {
         this.deliveryStatus = deliveryStatus;
     }
 
-    public Timestamp getSentAt() {
+    public Instant getSentAt() {
         return sentAt;
+    }
+
+    public void setSentAt(Instant sentAt) {
+        this.sentAt = sentAt;
     }
 }
