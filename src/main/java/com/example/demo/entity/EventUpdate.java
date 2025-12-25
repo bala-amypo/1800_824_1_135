@@ -605,16 +605,91 @@
 // }
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.PrePersist;
+
+// import java.sql.Timestamp;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     private Event event;
+
+//     private String content;
+
+//     private String severityLevel;
+
+//     // 🔴 MUST be Timestamp (TEST EXPECTS THIS)
+//     private Timestamp timestamp;
+
+//     @PrePersist
+//     public void onCreate() {
+//         this.timestamp = new Timestamp(System.currentTimeMillis());
+//     }
+
+//     // ===== GETTERS =====
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     public String getContent() {
+//         return content;
+//     }
+
+//     public String getSeverityLevel() {
+//         return severityLevel;
+//     }
+
+//     // 🔴 TEST EXPECTS Timestamp
+//     public Timestamp getTimestamp() {
+//         return timestamp;
+//     }
+
+//     // ===== SETTERS =====
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+
+//     public void setContent(String content) {
+//         this.content = content;
+//     }
+
+//     public void setSeverityLevel(String severityLevel) {
+//         this.severityLevel = severityLevel;
+//     }
+
+//     public void setTimestamp(Timestamp timestamp) {
+//         this.timestamp = timestamp;
+//     }
+// }
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 public class EventUpdate {
@@ -623,61 +698,18 @@ public class EventUpdate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Event event;
+    private Instant timestamp;
 
-    private String content;
-
-    private String severityLevel;
-
-    // 🔴 MUST be Timestamp (TEST EXPECTS THIS)
-    private Timestamp timestamp;
-
-    @PrePersist
-    public void onCreate() {
-        this.timestamp = new Timestamp(System.currentTimeMillis());
-    }
-
-    // ===== GETTERS =====
     public Long getId() {
         return id;
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getSeverityLevel() {
-        return severityLevel;
-    }
-
-    // 🔴 TEST EXPECTS Timestamp
-    public Timestamp getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 
-    // ===== SETTERS =====
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setSeverityLevel(String severityLevel) {
-        this.severityLevel = severityLevel;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
 }
+
