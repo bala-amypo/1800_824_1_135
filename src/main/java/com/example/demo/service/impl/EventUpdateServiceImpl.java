@@ -392,3 +392,4 @@ public class EventUpdateServiceImpl implements EventUpdateService {
         return updateRepository.findByEventId(eventId);
     }
 }
+

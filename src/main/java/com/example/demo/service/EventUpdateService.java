@@ -72,3 +72,4 @@ public interface EventUpdateService {
 
     List<EventUpdate> getUpdatesForEvent(Long eventId);
 }
+
