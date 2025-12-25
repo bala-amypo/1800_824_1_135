@@ -435,6 +435,91 @@
 // }
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.PrePersist;
+
+// import java.sql.Timestamp;
+// import java.time.Instant;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     private Event event;
+
+//     private String content;
+
+//     private String severityLevel;
+
+//     // 🔴 MUST BE Instant (NOT Timestamp)
+//     private Instant timestamp;
+
+//     @PrePersist
+//     public void onCreate() {
+//         this.timestamp = Instant.now();
+//     }
+
+//     // ========= GETTERS =========
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     public String getContent() {
+//         return content;
+//     }
+
+//     public String getSeverityLevel() {
+//         return severityLevel;
+//     }
+
+//     // 🔴 TEST EXPECTS Instant
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
+
+//     // ========= SETTERS =========
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+
+//     public void setContent(String content) {
+//         this.content = content;
+//     }
+
+//     public void setSeverityLevel(String severityLevel) {
+//         this.severityLevel = severityLevel;
+//     }
+
+//     // ✅ Used by your code
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+
+//     // ✅ Used by TEST (Timestamp → Instant)
+//     public void setTimestamp(Timestamp timestamp) {
+//         this.timestamp = timestamp.toInstant();
+//     }
+// }
+
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
@@ -461,7 +546,7 @@ public class EventUpdate {
 
     private String severityLevel;
 
-    // 🔴 MUST BE Instant (NOT Timestamp)
+    // 🔴 MUST BE Instant
     private Instant timestamp;
 
     @PrePersist
@@ -486,7 +571,7 @@ public class EventUpdate {
         return severityLevel;
     }
 
-    // 🔴 TEST EXPECTS Instant
+    // 🔴 TEST EXPECTS THIS EXACT SIGNATURE
     public Instant getTimestamp() {
         return timestamp;
     }
@@ -508,7 +593,7 @@ public class EventUpdate {
         this.severityLevel = severityLevel;
     }
 
-    // ✅ Used by your code
+    // ✅ Used by your service
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
