@@ -1,19 +1,88 @@
-// package com.example.demo.service;
+// // package com.example.demo.service;
 
-// import com.example.demo.entity.Subscription;
+// // import com.example.demo.entity.Subscription;
 
-// import java.util.List;
+// // import java.util.List;
 
-// public interface SubscriptionService {
+// // public interface SubscriptionService {
 
-//     void subscribe(Long userId, Long eventId);
+// //     void subscribe(Long userId, Long eventId);
 
-//     void unsubscribe(Long userId, Long eventId);
+// //     void unsubscribe(Long userId, Long eventId);
 
-//     List<Subscription> getSubscriptionsForUser(Long userId);
+// //     List<Subscription> getSubscriptionsForUser(Long userId);
 
-//     boolean checkSubscription(Long userId, Long eventId);
-// }                  
+// //     boolean checkSubscription(Long userId, Long eventId);
+// // }                  
+
+// // package com.example.demo.service;
+
+// // import com.example.demo.entity.Subscription;
+// // import java.util.List;
+
+// // public interface SubscriptionService {
+
+// //     Subscription subscribe(Long userId, Long eventId);
+
+// //     boolean isSubscribed(Long userId, Long eventId);
+
+// //     List<Subscription> getUserSubscriptions(Long userId);
+// // }
+// // package com.example.demo.service;
+
+// // import com.example.demo.entity.Subscription;
+// // import java.util.List;
+
+// // public interface SubscriptionService {
+
+// //     Subscription subscribe(Long userId, Long eventId);
+
+// //     void unsubscribe(Long userId, Long eventId);
+
+// //     boolean checkSubscription(Long userId, Long eventId);
+
+// //     List<Subscription> getSubscriptionsForUser(Long userId);
+// // }
+// // package com.example.demo.service;
+
+// // import com.example.demo.entity.Subscription;
+
+// // import java.util.List;
+
+// // public interface SubscriptionService {
+
+// //     Subscription subscribe(Long userId, Long eventId);
+
+// //     void unsubscribe(Long userId, Long eventId);          // 🔴 REQUIRED
+
+// //     boolean checkSubscription(Long userId, Long eventId); // 🔴 REQUIRED
+
+// //     List<Subscription> getSubscriptionsForUser(Long userId);
+
+// //     List<Subscription> getUserSubscriptions(Long userId);
+
+// // }
+
+// // package com.example.demo.service;
+
+// // import com.example.demo.entity.Subscription;
+// // import java.util.List;
+
+// // public interface SubscriptionService {
+
+// //     Subscription subscribe(Long userId, Long eventId);
+
+// //     void unsubscribe(Long userId, Long eventId);
+
+// //     boolean checkSubscription(Long userId, Long eventId);
+
+// //     // 🔴 REQUIRED BY TEST
+// //     boolean isSubscribed(Long userId, Long eventId);
+
+// //     // 🔴 REQUIRED BY TEST
+// //     List<Subscription> getUserSubscriptions(Long userId);
+// // }
+
 
 // package com.example.demo.service;
 
@@ -24,63 +93,18 @@
 
 //     Subscription subscribe(Long userId, Long eventId);
 
+//     void unsubscribe(Long userId, Long eventId);
+
+//     boolean checkSubscription(Long userId, Long eventId);
+
+//     // 🔴 REQUIRED by controller & tests
+//     List<Subscription> getSubscriptionsForUser(Long userId);
+
+//     // 🔴 REQUIRED by tests
+//     List<Subscription> getUserSubscriptions(Long userId);
+
+//     // 🔴 REQUIRED by tests (this caused ERROR 2)
 //     boolean isSubscribed(Long userId, Long eventId);
-
-//     List<Subscription> getUserSubscriptions(Long userId);
-// }
-// package com.example.demo.service;
-
-// import com.example.demo.entity.Subscription;
-// import java.util.List;
-
-// public interface SubscriptionService {
-
-//     Subscription subscribe(Long userId, Long eventId);
-
-//     void unsubscribe(Long userId, Long eventId);
-
-//     boolean checkSubscription(Long userId, Long eventId);
-
-//     List<Subscription> getSubscriptionsForUser(Long userId);
-// }
-// package com.example.demo.service;
-
-// import com.example.demo.entity.Subscription;
-
-// import java.util.List;
-
-// public interface SubscriptionService {
-
-//     Subscription subscribe(Long userId, Long eventId);
-
-//     void unsubscribe(Long userId, Long eventId);          // 🔴 REQUIRED
-
-//     boolean checkSubscription(Long userId, Long eventId); // 🔴 REQUIRED
-
-//     List<Subscription> getSubscriptionsForUser(Long userId);
-
-//     List<Subscription> getUserSubscriptions(Long userId);
-
-// }
-
-// package com.example.demo.service;
-
-// import com.example.demo.entity.Subscription;
-// import java.util.List;
-
-// public interface SubscriptionService {
-
-//     Subscription subscribe(Long userId, Long eventId);
-
-//     void unsubscribe(Long userId, Long eventId);
-
-//     boolean checkSubscription(Long userId, Long eventId);
-
-//     // 🔴 REQUIRED BY TEST
-//     boolean isSubscribed(Long userId, Long eventId);
-
-//     // 🔴 REQUIRED BY TEST
-//     List<Subscription> getUserSubscriptions(Long userId);
 // }
 
 
@@ -95,14 +119,9 @@ public interface SubscriptionService {
 
     void unsubscribe(Long userId, Long eventId);
 
-    boolean checkSubscription(Long userId, Long eventId);
-
-    // 🔴 REQUIRED by controller & tests
-    List<Subscription> getSubscriptionsForUser(Long userId);
-
-    // 🔴 REQUIRED by tests
-    List<Subscription> getUserSubscriptions(Long userId);
-
-    // 🔴 REQUIRED by tests (this caused ERROR 2)
+    // 🔴 REQUIRED BY TESTS
     boolean isSubscribed(Long userId, Long eventId);
+
+    // 🔴 REQUIRED BY TESTS
+    List<Subscription> getUserSubscriptions(Long userId);
 }
