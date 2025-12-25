@@ -442,7 +442,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
 
-    // 🔴 EXACT constructor expected by tests
+   
     public SubscriptionServiceImpl(
             SubscriptionRepository subscriptionRepository,
             UserRepository userRepository,
@@ -452,9 +452,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         this.userRepository = userRepository;
         this.eventRepository = eventRepository;
     }
-
-    // ================= REQUIRED BY TESTS =================
-
+ 
     @Override
     public Subscription subscribe(Long userId, Long eventId) {
 

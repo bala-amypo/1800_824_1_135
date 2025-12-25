@@ -18,15 +18,11 @@ public class EventServiceImpl implements EventService {
 
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
-
-    // ✅ EXACT constructor expected by tests
     public EventServiceImpl(EventRepository eventRepository,
                             UserRepository userRepository) {
         this.eventRepository = eventRepository;
         this.userRepository = userRepository;
     }
-
-    // ================= REQUIRED BY TESTS =================
 
     @Override
     public Event createEvent(Event event) {
@@ -63,7 +59,6 @@ public class EventServiceImpl implements EventService {
         return eventRepository.findByIsActiveTrue();
     }
 
-    // 🔴 INTERFACE EXPECTS void
     @Override
     public void deactivateEvent(Long id) {
 
@@ -74,9 +69,7 @@ public class EventServiceImpl implements EventService {
         eventRepository.save(event);
     }
 
-    // ================= CONTROLLER METHODS =================
-
-    // 🔴 REQUIRED by interface
+    
     @Override
     public Event save(Event event) {
         return eventRepository.save(event);
