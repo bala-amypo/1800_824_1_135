@@ -114,10 +114,61 @@
 //     }
 // }
 
+// package com.example.demo.service.impl;
+
+// import com.example.demo.entity.Subscription;
+// import com.example.demo.repository.SubscriptionRepository;
+// import com.example.demo.service.SubscriptionService;
+
+// import org.springframework.stereotype.Service;
+
+// import java.util.List;
+
+// @Service
+// public class SubscriptionServiceImpl implements SubscriptionService {
+
+//     private final SubscriptionRepository subscriptionRepository;
+
+//     public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository) {
+//         this.subscriptionRepository = subscriptionRepository;
+//     }
+
+//     @Override
+//     public Subscription subscribe(Long userId, Long eventId) {
+//         Subscription sub = new Subscription();
+//         sub.setUserId(userId);
+//         sub.setEventId(eventId);
+//         return subscriptionRepository.save(sub);
+//     }
+
+//     @Override
+//     public void unsubscribe(Long userId, Long eventId) {
+//         subscriptionRepository
+//                 .findByUserIdAndEventId(userId, eventId)
+//                 .ifPresent(subscriptionRepository::delete);
+//     }
+
+//     @Override
+//     public boolean checkSubscription(Long userId, Long eventId) {
+//         return subscriptionRepository
+//                 .findByUserIdAndEventId(userId, eventId)
+//                 .isPresent();
+//     }
+
+//     @Override
+//     public List<Subscription> getSubscriptionsForUser(Long userId) {
+//         return subscriptionRepository.findByUserId(userId);
+//     }
+// }
+
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Event;
 import com.example.demo.entity.Subscription;
+import com.example.demo.entity.User;
+import com.example.demo.repository.EventRepository;
 import com.example.demo.repository.SubscriptionRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.SubscriptionService;
 
 import org.springframework.stereotype.Service;
@@ -128,31 +179,40 @@ import java.util.List;
 public class SubscriptionServiceImpl implements SubscriptionService {
 
     private final SubscriptionRepository subscriptionRepository;
+    private final UserRepository userRepository;
+    private final EventRepository eventRepository;
 
-    public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository) {
+    // 🔴 Constructor EXACTLY as test expects
+    public SubscriptionServiceImpl(
+            SubscriptionRepository subscriptionRepository,
+            UserRepository userRepository,
+            EventRepository eventRepository
+    ) {
         this.subscriptionRepository = subscriptionRepository;
+        this.userRepository = userRepository;
+        this.eventRepository = eventRepository;
     }
 
     @Override
     public Subscription subscribe(Long userId, Long eventId) {
-        Subscription sub = new Subscription();
-        sub.setUserId(userId);
-        sub.setEventId(eventId);
-        return subscriptionRepository.save(sub);
+        User user = userRepository.findById(userId).orElseThrow();
+        Event event = eventRepository.findById(eventId).orElseThrow();
+
+        Subscription subscription = new Subscription();
+        subscription.setUser(user);     // ✅ NOT setUserId
+        subscription.setEvent(event);   // ✅ NOT setEventId
+
+        return subscriptionRepository.save(subscription);
     }
 
     @Override
     public void unsubscribe(Long userId, Long eventId) {
-        subscriptionRepository
-                .findByUserIdAndEventId(userId, eventId)
-                .ifPresent(subscriptionRepository::delete);
+        subscriptionRepository.deleteByUserIdAndEventId(userId, eventId);
     }
 
     @Override
     public boolean checkSubscription(Long userId, Long eventId) {
-        return subscriptionRepository
-                .findByUserIdAndEventId(userId, eventId)
-                .isPresent();
+        return subscriptionRepository.existsByUserIdAndEventId(userId, eventId);
     }
 
     @Override
@@ -160,4 +220,3 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return subscriptionRepository.findByUserId(userId);
     }
 }
-
