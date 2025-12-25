@@ -58,4 +58,7 @@ public interface SubscriptionService {
     boolean checkSubscription(Long userId, Long eventId); // 🔴 REQUIRED
 
     List<Subscription> getSubscriptionsForUser(Long userId);
+
+    List<Subscription> getUserSubscriptions(Long userId);
+
 }
