@@ -298,7 +298,7 @@
 //     public List<EventUpdate> getUpdatesForEvent(Long eventId) {
 //         return updateRepository.findByEventId(eventId);
 //     }
-}
+// }
 
 package com.example.demo.service.impl;
 
