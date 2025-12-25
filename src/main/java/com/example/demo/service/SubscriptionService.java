@@ -63,6 +63,27 @@
 
 // }
 
+// package com.example.demo.service;
+
+// import com.example.demo.entity.Subscription;
+// import java.util.List;
+
+// public interface SubscriptionService {
+
+//     Subscription subscribe(Long userId, Long eventId);
+
+//     void unsubscribe(Long userId, Long eventId);
+
+//     boolean checkSubscription(Long userId, Long eventId);
+
+//     // 🔴 REQUIRED BY TEST
+//     boolean isSubscribed(Long userId, Long eventId);
+
+//     // 🔴 REQUIRED BY TEST
+//     List<Subscription> getUserSubscriptions(Long userId);
+// }
+
+
 package com.example.demo.service;
 
 import com.example.demo.entity.Subscription;
@@ -76,9 +97,12 @@ public interface SubscriptionService {
 
     boolean checkSubscription(Long userId, Long eventId);
 
-    // 🔴 REQUIRED BY TEST
-    boolean isSubscribed(Long userId, Long eventId);
+    // 🔴 REQUIRED by controller & tests
+    List<Subscription> getSubscriptionsForUser(Long userId);
 
-    // 🔴 REQUIRED BY TEST
+    // 🔴 REQUIRED by tests
     List<Subscription> getUserSubscriptions(Long userId);
+
+    // 🔴 REQUIRED by tests (this caused ERROR 2)
+    boolean isSubscribed(Long userId, Long eventId);
 }
