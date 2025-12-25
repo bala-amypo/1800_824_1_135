@@ -73,6 +73,47 @@
 //         return subscriptionRepository.existsByUserIdAndEventId(userId, eventId);
 //     }
 // }
+// package com.example.demo.service.impl;
+
+// import com.example.demo.entity.Subscription;
+// import com.example.demo.repository.SubscriptionRepository;
+// import com.example.demo.service.SubscriptionService;
+
+// import org.springframework.stereotype.Service;
+
+// import java.util.List;
+
+// @Service
+// public class SubscriptionServiceImpl implements SubscriptionService {
+
+//     private final SubscriptionRepository subscriptionRepository;
+
+//     // ✔ Constructor EXACTLY as test expects
+//     public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository) {
+//         this.subscriptionRepository = subscriptionRepository;
+//     }
+
+//     @Override
+//     public Subscription subscribe(Long userId, Long eventId) {
+//         Subscription sub = new Subscription();
+//         sub.setUserId(userId);
+//         sub.setEventId(eventId);
+//         return subscriptionRepository.save(sub);
+//     }
+
+//     @Override
+//     public boolean isSubscribed(Long userId, Long eventId) {
+//         return subscriptionRepository
+//                 .findByUserIdAndEventId(userId, eventId)
+//                 .isPresent();
+//     }
+
+//     @Override
+//     public List<Subscription> getUserSubscriptions(Long userId) {
+//         return subscriptionRepository.findByUserId(userId);
+//     }
+// }
+
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Subscription;
@@ -88,7 +129,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     private final SubscriptionRepository subscriptionRepository;
 
-    // ✔ Constructor EXACTLY as test expects
     public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository) {
         this.subscriptionRepository = subscriptionRepository;
     }
@@ -102,14 +142,22 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public boolean isSubscribed(Long userId, Long eventId) {
+    public void unsubscribe(Long userId, Long eventId) {
+        subscriptionRepository
+                .findByUserIdAndEventId(userId, eventId)
+                .ifPresent(subscriptionRepository::delete);
+    }
+
+    @Override
+    public boolean checkSubscription(Long userId, Long eventId) {
         return subscriptionRepository
                 .findByUserIdAndEventId(userId, eventId)
                 .isPresent();
     }
 
     @Override
-    public List<Subscription> getUserSubscriptions(Long userId) {
+    public List<Subscription> getSubscriptionsForUser(Long userId) {
         return subscriptionRepository.findByUserId(userId);
     }
 }
+

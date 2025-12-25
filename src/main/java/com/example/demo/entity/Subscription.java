@@ -1,72 +1,111 @@
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.PrePersist;
 
 
-import java.sql.Timestamp;
+// import java.sql.Timestamp;
 
 
-@Entity
-public class Subscription
-{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+// @Entity
+// public class Subscription
+// {
+//     @Id
+//     @GeneratedValue(strategy=GenerationType.IDENTITY)
+//     private Long id;
 
-    @ManyToOne
-    private User user;
+//     @ManyToOne
+//     private User user;
 
-    @ManyToOne
-    private Event event;
-    private Timestamp subscribedAt;
+//     @ManyToOne
+//     private Event event;
+//     private Timestamp subscribedAt;
 
-    @PrePersist
-    public void onCreate() {
-        this.subscribedAt = new Timestamp(System.currentTimeMillis());
-    }
+//     @PrePersist
+//     public void onCreate() {
+//         this.subscribedAt = new Timestamp(System.currentTimeMillis());
+//     }
 
-    public Long getId() {
-         return id; 
-         }
-    public User getUser() {
-         return user; 
-         }
-    public Event getEvent() {
-         return event;
-          }
+//     public Long getId() {
+//          return id; 
+//          }
+//     public User getUser() {
+//          return user; 
+//          }
+//     public Event getEvent() {
+//          return event;
+//           }
     
     
-    public Timestamp getSubscribedAt() {
-         return subscribedAt;
-          }
+//     public Timestamp getSubscribedAt() {
+//          return subscribedAt;
+//           }
     
 
-    public void setId(Long id) { 
-        this.id = id;
-         }
-    public void setUser(User user) { 
-        this.user = user;
-         }
-    public void setEvent(Event event) { 
-        this.event = event;
-         }
+//     public void setId(Long id) { 
+//         this.id = id;
+//          }
+//     public void setUser(User user) { 
+//         this.user = user;
+//          }
+//     public void setEvent(Event event) { 
+//         this.event = event;
+//          }
    
      
      
-    public Subscription(Long id, User user,Event event,Timestamp subscribedAt){
+//     public Subscription(Long id, User user,Event event,Timestamp subscribedAt){
 
-        this.id = id;
-        this.user = user;
-        this.event = event;
-        this.subscribedAt = subscribedAt;
+//         this.id = id;
+//         this.user = user;
+//         this.event = event;
+//         this.subscribedAt = subscribedAt;
+//     }
+//      public Subscription() {
+//     }
+// }
+package com.example.demo.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Subscription {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long userId;
+    private Long eventId;
+
+    // ===== GETTERS / SETTERS =====
+
+    public Long getId() {
+        return id;
     }
-     public Subscription() {
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 }
