@@ -923,70 +923,70 @@
 //         }
 //     }
 // }
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.*;
-import java.time.Instant;
+// import jakarta.persistence.*;
+// import java.time.Instant;
 
-@Entity
-public class EventUpdate {
+// @Entity
+// public class EventUpdate {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @ManyToOne
-    private Event event;
+//     @ManyToOne
+//     private Event event;
 
-    private Instant timestamp;
+//     private Instant timestamp;
 
-    private Long u1;
-    private Long u2;
+//     private Long u1;
+//     private Long u2;
 
-    @Enumerated(EnumType.STRING)
-    private SeverityLevel severityLevel;
+//     @Enumerated(EnumType.STRING)
+//     private SeverityLevel severityLevel;
 
-    public Long getId() {
-        return id;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    // REQUIRED by tests
-    public void setId(Long id) {
-        this.id = id;
-    }
+//     // REQUIRED by tests
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
 
-    public Event getEvent() {
-        return event;
-    }
+//     public Event getEvent() {
+//         return event;
+//     }
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
 
-    public Instant getTimestamp() {
-        return timestamp;
-    }
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
 
-    public void setTimestamp(Instant timestamp) {
-        this.timestamp = timestamp;
-    }
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
 
-    public void setU1(Long u1) {
-        this.u1 = u1;
-    }
+//     public void setU1(Long u1) {
+//         this.u1 = u1;
+//     }
 
-    public void setU2(Long u2) {
-        this.u2 = u2;
-    }
+//     public void setU2(Long u2) {
+//         this.u2 = u2;
+//     }
 
-    public void setSeverityLevel(SeverityLevel severityLevel) {
-        this.severityLevel = severityLevel;
-    }
+//     public void setSeverityLevel(SeverityLevel severityLevel) {
+//         this.severityLevel = severityLevel;
+//     }
 
-    @PrePersist
-    public void onCreate() {
-        if (this.timestamp == null) {
-            this.timestamp = Instant.now();
-        }
-    }
-}
+//     @PrePersist
+//     public void onCreate() {
+//         if (this.timestamp == null) {
+//             this.timestamp = Instant.now();
+//         }
+//     }
+// }
