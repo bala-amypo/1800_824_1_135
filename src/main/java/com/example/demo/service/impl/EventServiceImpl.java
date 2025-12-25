@@ -205,10 +205,10 @@ public class EventServiceImpl implements EventService {
     public Event deactivateEvent(Long id) {
         Event event = eventRepository.findById(id).orElse(null);
         if (event != null) {
-            event.setIsActive(false);
+            event.setActive(false);
             eventRepository.save(event);
         }
       return event;
-      
+
     }
 }
