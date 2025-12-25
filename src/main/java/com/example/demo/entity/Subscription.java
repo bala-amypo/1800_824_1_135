@@ -110,13 +110,61 @@
 //     }
 // }
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.ManyToOne;
+
+// @Entity
+// public class Subscription {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     @JoinColumn(name = "user_id")
+//     private User user;
+
+//     @ManyToOne
+//     @JoinColumn(name = "event_id")
+//     private Event event;
+
+//     public Subscription() {
+//     }
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public User getUser() {
+//         return user;
+//     }
+
+//     // ✅ REQUIRED BY SERVICE + TEST
+//     public void setUser(User user) {
+//         this.user = user;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     // ✅ REQUIRED BY SERVICE + TEST
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+// }
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -127,15 +175,12 @@ public class Subscription {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
     private Event event;
 
-    public Subscription() {
-    }
+    // ===== REQUIRED BY TESTS =====
 
     public Long getId() {
         return id;
@@ -145,8 +190,7 @@ public class Subscription {
         return user;
     }
 
-    // ✅ REQUIRED BY SERVICE + TEST
-    public void setUser(User user) {
+    public void setUser(User user) {     // 🔴 REQUIRED
         this.user = user;
     }
 
@@ -154,8 +198,7 @@ public class Subscription {
         return event;
     }
 
-    // ✅ REQUIRED BY SERVICE + TEST
-    public void setEvent(Event event) {
+    public void setEvent(Event event) {  // 🔴 REQUIRED
         this.event = event;
     }
 }

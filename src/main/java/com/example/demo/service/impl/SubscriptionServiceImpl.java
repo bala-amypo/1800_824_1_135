@@ -161,6 +161,65 @@
 //     }
 // }
 
+// package com.example.demo.service.impl;
+
+// import com.example.demo.entity.Event;
+// import com.example.demo.entity.Subscription;
+// import com.example.demo.entity.User;
+// import com.example.demo.repository.EventRepository;
+// import com.example.demo.repository.SubscriptionRepository;
+// import com.example.demo.repository.UserRepository;
+// import com.example.demo.service.SubscriptionService;
+
+// import org.springframework.stereotype.Service;
+
+// import java.util.List;
+
+// @Service
+// public class SubscriptionServiceImpl implements SubscriptionService {
+
+//     private final SubscriptionRepository subscriptionRepository;
+//     private final UserRepository userRepository;
+//     private final EventRepository eventRepository;
+
+//     // 🔴 Constructor EXACTLY as test expects
+//     public SubscriptionServiceImpl(
+//             SubscriptionRepository subscriptionRepository,
+//             UserRepository userRepository,
+//             EventRepository eventRepository
+//     ) {
+//         this.subscriptionRepository = subscriptionRepository;
+//         this.userRepository = userRepository;
+//         this.eventRepository = eventRepository;
+//     }
+
+//     @Override
+//     public Subscription subscribe(Long userId, Long eventId) {
+//         User user = userRepository.findById(userId).orElseThrow();
+//         Event event = eventRepository.findById(eventId).orElseThrow();
+
+//         Subscription subscription = new Subscription();
+//         subscription.setUser(user);     // ✅ NOT setUserId
+//         subscription.setEvent(event);   // ✅ NOT setEventId
+
+//         return subscriptionRepository.save(subscription);
+//     }
+
+//     @Override
+//     public void unsubscribe(Long userId, Long eventId) {
+//         subscriptionRepository.deleteByUserIdAndEventId(userId, eventId);
+//     }
+
+//     @Override
+//     public boolean checkSubscription(Long userId, Long eventId) {
+//         return subscriptionRepository.existsByUserIdAndEventId(userId, eventId);
+//     }
+
+//     @Override
+//     public List<Subscription> getSubscriptionsForUser(Long userId) {
+//         return subscriptionRepository.findByUserId(userId);
+//     }
+// }
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Event;
@@ -182,7 +241,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
 
-    // 🔴 Constructor EXACTLY as test expects
+    // ✅ EXACT constructor expected by tests
     public SubscriptionServiceImpl(
             SubscriptionRepository subscriptionRepository,
             UserRepository userRepository,
@@ -199,8 +258,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         Event event = eventRepository.findById(eventId).orElseThrow();
 
         Subscription subscription = new Subscription();
-        subscription.setUser(user);     // ✅ NOT setUserId
-        subscription.setEvent(event);   // ✅ NOT setEventId
+        subscription.setUser(user);
+        subscription.setEvent(event);
 
         return subscriptionRepository.save(subscription);
     }
