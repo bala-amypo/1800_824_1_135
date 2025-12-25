@@ -104,8 +104,9 @@ public class BroadcastLog {
     @JoinColumn(name = "subscriber_id")
     private User subscriber;
 
-    // PENDING / SENT / FAILED
-    private String deliveryStatus;
+    // // PENDING / SENT / FAILED
+    //private String deliveryStatus;
+
 
     private Timestamp sentAt;
 
