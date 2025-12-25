@@ -68,6 +68,7 @@ public interface EventUpdateRepository extends JpaRepository<EventUpdate, Long> 
 
     // 🔴 TEST EXPECTS THIS METHOD
     List<EventUpdate> findByEventId(Long eventId);
+    
 
     // 🔴 TEST EXPECTS THIS METHOD
     List<EventUpdate> findAllByOrderByTimestampAsc();
