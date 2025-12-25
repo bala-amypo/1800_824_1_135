@@ -1,5 +1,3 @@
- 
-
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
@@ -23,23 +21,20 @@ public class EventUpdate {
     @ManyToOne
     private Event event;
 
-    // 🔴 TEST EXPECTS Instant
+    //  TEST EXPECTS Instant
     private Instant timestamp;
 
     @Enumerated(EnumType.STRING)
     private SeverityLevel severityLevel;
 
-    // ================= GETTERS & SETTERS =================
+ 
 
     public Long getId() {
         return id;
     }
-
-    // REQUIRED by tests
     public void setId(Long id) {
         this.id = id;
     }
-
     public Event getEvent() {
         return event;
     }
@@ -48,35 +43,31 @@ public class EventUpdate {
         this.event = event;
     }
 
-    // REQUIRED by tests
+    
     public Instant getTimestamp() {
         return timestamp;
     }
 
-    // REQUIRED by tests
+
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
     }
 
-    // REQUIRED by tests
+
     public SeverityLevel getSeverityLevel() {
         return severityLevel;
     }
 
-    // REQUIRED by tests
+
     public void setSeverityLevel(SeverityLevel severityLevel) {
         this.severityLevel = severityLevel;
     }
-
-    // ================= LIFECYCLE =================
 
     @PrePersist
     public void onCreate() {
         if (this.timestamp == null) {
             this.timestamp = Instant.now();
         }
-
-        // 🔴 REQUIRED by test
         if (this.severityLevel == null) {
             this.severityLevel = SeverityLevel.LOW;
         }
