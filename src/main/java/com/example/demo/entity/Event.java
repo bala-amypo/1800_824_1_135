@@ -303,9 +303,68 @@
 // }
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.*;
+// import java.sql.Timestamp;
+
+// @Entity
+// public class Event {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private String title;
+//     private String description;
+//     private String location;
+//     private String category;
+
+//     private boolean isActive = true;
+
+//     @ManyToOne
+//     @JoinColumn(name = "publisher_id")
+//     private User publisher;
+
+//     private Timestamp createdAt;
+//     private Timestamp lastUpdatedAt;
+
+//     @PrePersist
+//     public void onCreate() {
+//         this.createdAt = new Timestamp(System.currentTimeMillis());
+//         this.lastUpdatedAt = this.createdAt;
+//     }
+
+//     @PreUpdate
+//     public void onUpdate() {
+//         this.lastUpdatedAt = new Timestamp(System.currentTimeMillis());
+//     }
+
+//     // ===== REQUIRED GETTERS / SETTERS =====
+
+//     public Long getId() { return id; }
+//     public void setId(Long id) { this.id = id; }
+
+//     public boolean isActive() { return isActive; }
+//     public Boolean getIsActive() { return isActive; }
+//     public void setActive(boolean active) { isActive = active; }
+
+//     public User getPublisher() { return publisher; }
+//     public void setPublisher(User publisher) { this.publisher = publisher; }
+
+//     public Timestamp getLastUpdatedAt() { return lastUpdatedAt; }
+//     public void setLastUpdatedAt(Timestamp t) { this.lastUpdatedAt = t; }
+// }
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import java.sql.Timestamp;
 
 @Entity
@@ -329,10 +388,13 @@ public class Event {
     private Timestamp createdAt;
     private Timestamp lastUpdatedAt;
 
+    // ===== JPA LIFECYCLE =====
+
     @PrePersist
     public void onCreate() {
         this.createdAt = new Timestamp(System.currentTimeMillis());
         this.lastUpdatedAt = this.createdAt;
+        this.isActive = true;
     }
 
     @PreUpdate
@@ -340,18 +402,59 @@ public class Event {
         this.lastUpdatedAt = new Timestamp(System.currentTimeMillis());
     }
 
-    // ===== REQUIRED GETTERS / SETTERS =====
+    // ===== GETTERS / SETTERS (TEST EXPECTED) =====
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public boolean isActive() { return isActive; }
-    public Boolean getIsActive() { return isActive; }
-    public void setActive(boolean active) { isActive = active; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public User getPublisher() { return publisher; }
-    public void setPublisher(User publisher) { this.publisher = publisher; }
+    public boolean isActive() {
+        return isActive;
+    }
 
-    public Timestamp getLastUpdatedAt() { return lastUpdatedAt; }
-    public void setLastUpdatedAt(Timestamp t) { this.lastUpdatedAt = t; }
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    // ❗ TESTS + SERVICE EXPECT THIS
+    public void setActive(boolean active) {
+        this.isActive = active;
+    }
+
+    public User getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(User publisher) {
+        this.publisher = publisher;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Timestamp getLastUpdatedAt() {
+        return lastUpdatedAt;
+    }
+
+    public void setLastUpdatedAt(Timestamp lastUpdatedAt) {
+        this.lastUpdatedAt = lastUpdatedAt;
+    }
+
+    // optional but safe
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 }
