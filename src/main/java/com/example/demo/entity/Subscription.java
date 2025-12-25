@@ -204,6 +204,49 @@
 // }
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+
+// @Entity
+// public class Subscription {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     private User user;
+
+//     @ManyToOne
+//     private Event event;
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public User getUser() {
+//         return user;
+//     }
+
+//     public void setUser(User user) {
+//         this.user = user;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+// }
+
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
@@ -211,6 +254,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+
+import java.time.Instant;
 
 @Entity
 public class Subscription {
@@ -224,6 +270,13 @@ public class Subscription {
 
     @ManyToOne
     private Event event;
+
+    private Instant createdAt;
+
+    @PrePersist
+    public void onCreate() {
+        this.createdAt = Instant.now();
+    }
 
     public Long getId() {
         return id;
@@ -243,5 +296,9 @@ public class Subscription {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 }
