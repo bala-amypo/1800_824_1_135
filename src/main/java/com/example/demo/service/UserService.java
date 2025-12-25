@@ -39,6 +39,22 @@
 //     List<User> getAllUsers();
 // }
 
+// package com.example.demo.service;
+
+// import com.example.demo.entity.User;
+// import java.util.List;
+
+// public interface UserService {
+
+//     User register(User user);
+
+//     User getById(Long id);
+
+//     List<User> getAllUsers();
+
+//     User findByEmail(String email);
+// }
+
 package com.example.demo.service;
 
 import com.example.demo.entity.User;
@@ -54,3 +70,4 @@ public interface UserService {
 
     User findByEmail(String email);
 }
+
