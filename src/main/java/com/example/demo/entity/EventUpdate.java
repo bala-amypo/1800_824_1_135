@@ -156,14 +156,76 @@
 //         this.timestamp = timestamp;
 //     }
 // }
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.ManyToOne;
+
+// import java.time.Instant;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     @JoinColumn(name = "event_id")
+//     private Event event;
+
+//     private String message;
+
+//     private Instant timestamp;
+
+//     // ===== GETTERS & SETTERS =====
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public void setId(Long id) {
+//         this.id = id;
+//     }
+
+//     public Event getEvent() {
+//         return event;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+
+//     public String getMessage() {
+//         return message;
+//     }
+
+//     public void setMessage(String message) {
+//         this.message = message;
+//     }
+
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
+
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+// }
+
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 
 import java.time.Instant;
 
@@ -175,41 +237,56 @@ public class EventUpdate {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
     private Event event;
 
-    private String message;
+    private String content;
 
+    // 🔴 REQUIRED BY TESTS
+    private String severityLevel;
+
+    // 🔴 REQUIRED BY TESTS
     private Instant timestamp;
 
-    // ===== GETTERS & SETTERS =====
+    // 🔴 REQUIRED BY TESTS
+    @PrePersist
+    public void onCreate() {
+        this.timestamp = Instant.now();
+    }
+
+    // ===== GETTERS =====
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Event getEvent() {
         return event;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public String getContent() {
+        return content;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public String getSeverityLevel() {   // ✅ FIXED
+        return severityLevel;
     }
 
     public Instant getTimestamp() {
         return timestamp;
+    }
+
+    // ===== SETTERS =====
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setSeverityLevel(String severityLevel) { // ✅ FIXED
+        this.severityLevel = severityLevel;
     }
 
     public void setTimestamp(Instant timestamp) {
