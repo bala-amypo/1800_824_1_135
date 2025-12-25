@@ -202,11 +202,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void deactivateEvent(Long id) {
+    public Event deactivateEvent(Long id) {
         Event event = eventRepository.findById(id).orElse(null);
         if (event != null) {
             event.setIsActive(false);
             eventRepository.save(event);
         }
+        
     }
 }

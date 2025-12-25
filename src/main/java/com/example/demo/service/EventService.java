@@ -60,5 +60,6 @@ public interface EventService {
     Event save(Event event);
     Event getById(Long id);
     List<Event> getAllEvents();
-    void deactivateEvent(Long id);
+    Event deactivateEvent(Long id);
+    
 }
