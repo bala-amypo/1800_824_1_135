@@ -6,6 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 
 import java.sql.Timestamp;
 
@@ -23,7 +26,11 @@ public class User{
 
     private String password;
 
-    private String role;
+    //private String role;
+
+    
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     private Timestamp createdAt;
 
@@ -72,7 +79,7 @@ public class User{
         }
 
      
-    public User(Long id, String fullName, String email, String password,String role,Timestamp createdAt) {
+    public User(Long id, String fullName, String email, String password,Role role,Timestamp createdAt) {
 
         this.id = id;
         this.fullName = fullName;
