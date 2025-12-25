@@ -682,12 +682,46 @@
 //     }
 // }
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+
+// import java.time.Instant;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private Instant timestamp;
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
+
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+// }
+
+
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 import java.time.Instant;
 
@@ -698,10 +732,21 @@ public class EventUpdate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Event event;          // 🔴 REQUIRED
+
     private Instant timestamp;
 
     public Long getId() {
         return id;
+    }
+
+    public Event getEvent() {     // 🔴 REQUIRED
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public Instant getTimestamp() {
@@ -712,5 +757,3 @@ public class EventUpdate {
         this.timestamp = timestamp;
     }
 }
-
-
