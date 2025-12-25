@@ -218,78 +218,78 @@
 // }
 
 
-package com.example.demo.entity;
+// package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.PrePersist;
 
-import java.time.Instant;
+// import java.time.Instant;
 
-@Entity
-public class EventUpdate {
+// @Entity
+// public class EventUpdate {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @ManyToOne
-    private Event event;
+//     @ManyToOne
+//     private Event event;
 
-    private String content;
+//     private String content;
 
-    // 🔴 REQUIRED BY TESTS
-    private String severityLevel;
+//     // 🔴 REQUIRED BY TESTS
+//     private String severityLevel;
 
-    // 🔴 REQUIRED BY TESTS
-    private Instant timestamp;
+//     // 🔴 REQUIRED BY TESTS
+//     private Instant timestamp;
 
-    // 🔴 REQUIRED BY TESTS
-    @PrePersist
-    public void onCreate() {
-        this.timestamp = Instant.now();
-    }
+//     // 🔴 REQUIRED BY TESTS
+//     @PrePersist
+//     public void onCreate() {
+//         this.timestamp = Instant.now();
+//     }
 
-    // ===== GETTERS =====
+//     // ===== GETTERS =====
 
-    public Long getId() {
-        return id;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    public Event getEvent() {
-        return event;
-    }
+//     public Event getEvent() {
+//         return event;
+//     }
 
-    public String getContent() {
-        return content;
-    }
+//     public String getContent() {
+//         return content;
+//     }
 
-    public String getSeverityLevel() {   // ✅ FIXED
-        return severityLevel;
-    }
+//     public String getSeverityLevel() {   // ✅ FIXED
+//         return severityLevel;
+//     }
 
-    public Instant getTimestamp() {
-        return timestamp;
-    }
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
 
-    // ===== SETTERS =====
+//     // ===== SETTERS =====
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+//     public void setContent(String content) {
+//         this.content = content;
+//     }
 
-    public void setSeverityLevel(String severityLevel) { // ✅ FIXED
-        this.severityLevel = severityLevel;
-    }
+//     public void setSeverityLevel(String severityLevel) { // ✅ FIXED
+//         this.severityLevel = severityLevel;
+//     }
 
-    public void setTimestamp(Instant timestamp) {
-        this.timestamp = timestamp;
-    }
-}
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+// }
