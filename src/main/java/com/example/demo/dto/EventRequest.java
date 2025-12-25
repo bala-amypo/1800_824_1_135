@@ -9,29 +9,45 @@
 
 package com.example.demo.dto;
 
-import com.example.demo.entity.SeverityLevel;
+public class EventRequest {
 
-public class EventUpdateRequest {
+    private String title;
+    private String description;
+    private String location;
+    private String category;
 
-    private String message;
-    private SeverityLevel severityLevel;
-
-    public EventUpdateRequest() {
+    public EventRequest() {
     }
 
-    public String getMessage() {
-        return message;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public SeverityLevel getSeverityLevel() {
-        return severityLevel;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSeverityLevel(SeverityLevel severityLevel) {
-        this.severityLevel = severityLevel;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
