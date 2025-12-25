@@ -70,12 +70,54 @@
 //      public Subscription() {
 //     }
 // }
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+
+// @Entity
+// public class Subscription {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private Long userId;
+//     private Long eventId;
+
+//     // ===== GETTERS / SETTERS =====
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public Long getUserId() {
+//         return userId;
+//     }
+
+//     public void setUserId(Long userId) {
+//         this.userId = userId;
+//     }
+
+//     public Long getEventId() {
+//         return eventId;
+//     }
+
+//     public void setEventId(Long eventId) {
+//         this.eventId = eventId;
+//     }
+// }
+
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Subscription {
@@ -84,28 +126,36 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-    private Long eventId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    // ===== GETTERS / SETTERS =====
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
+
+    public Subscription() {
+    }
 
     public Long getId() {
         return id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    // ✅ REQUIRED BY SERVICE + TEST
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getEventId() {
-        return eventId;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
+    // ✅ REQUIRED BY SERVICE + TEST
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }
