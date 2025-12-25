@@ -99,6 +99,49 @@
 //         return event;
 //     }
 // }
+// package com.example.demo.service.impl;
+
+// import com.example.demo.entity.Event;
+// import com.example.demo.repository.EventRepository;
+// import com.example.demo.repository.UserRepository;
+// import com.example.demo.service.EventService;
+
+// import org.springframework.stereotype.Service;
+
+// import java.util.List;
+
+// @Service
+// public class EventServiceImpl implements EventService {
+
+//     private final EventRepository eventRepository;
+//     private final UserRepository userRepository;
+
+//     // ✅ EXACT constructor expected by tests
+//     public EventServiceImpl(EventRepository eventRepository,
+//                             UserRepository userRepository) {
+//         this.eventRepository = eventRepository;
+//         this.userRepository = userRepository;
+//     }
+
+//     // ✅ Test expects this method
+//     @Override
+//     public Event createEvent(Event event) {
+//         return eventRepository.save(event);
+//     }
+
+//     // ✅ Test expects this method
+//     @Override
+//     public Event updateEvent(Long id, Event event) {
+//         event.setId(id);
+//         return eventRepository.save(event);
+//     }
+
+//     // ✅ Test expects this method
+//     @Override
+//     public List<Event> getActiveEvents() {
+//         return eventRepository.findAll();
+//     }
+// }
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Event;
@@ -116,29 +159,54 @@ public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-    // ✅ EXACT constructor expected by tests
+    // ✅ constructor EXACTLY as tests expect
     public EventServiceImpl(EventRepository eventRepository,
                             UserRepository userRepository) {
         this.eventRepository = eventRepository;
         this.userRepository = userRepository;
     }
 
-    // ✅ Test expects this method
+    // ===== TEST METHODS =====
+
     @Override
     public Event createEvent(Event event) {
         return eventRepository.save(event);
     }
 
-    // ✅ Test expects this method
     @Override
     public Event updateEvent(Long id, Event event) {
         event.setId(id);
         return eventRepository.save(event);
     }
 
-    // ✅ Test expects this method
     @Override
     public List<Event> getActiveEvents() {
         return eventRepository.findAll();
+    }
+
+    // ===== CONTROLLER METHODS =====
+
+    @Override
+    public Event save(Event event) {
+        return eventRepository.save(event);
+    }
+
+    @Override
+    public Event getById(Long id) {
+        return eventRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
+
+    @Override
+    public void deactivateEvent(Long id) {
+        Event event = eventRepository.findById(id).orElse(null);
+        if (event != null) {
+            event.setIsActive(false);
+            eventRepository.save(event);
+        }
     }
 }

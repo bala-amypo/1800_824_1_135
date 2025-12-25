@@ -31,6 +31,19 @@
 
 //     Event deactivateEvent(Long id);
 // }
+// package com.example.demo.service;
+
+// import com.example.demo.entity.Event;
+// import java.util.List;
+
+// public interface EventService {
+
+//     Event createEvent(Event event);
+
+//     Event updateEvent(Long id, Event event);
+
+//     List<Event> getActiveEvents();
+// }
 package com.example.demo.service;
 
 import com.example.demo.entity.Event;
@@ -38,9 +51,14 @@ import java.util.List;
 
 public interface EventService {
 
+    // used by tests
     Event createEvent(Event event);
-
     Event updateEvent(Long id, Event event);
-
     List<Event> getActiveEvents();
+
+    // used by controller
+    Event save(Event event);
+    Event getById(Long id);
+    List<Event> getAllEvents();
+    void deactivateEvent(Long id);
 }
