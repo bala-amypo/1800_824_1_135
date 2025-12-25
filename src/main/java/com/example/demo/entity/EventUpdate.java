@@ -715,14 +715,53 @@
 
 
 
+// package com.example.demo.entity;
+
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
+
+// import java.time.Instant;
+
+// @Entity
+// public class EventUpdate {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     @ManyToOne
+//     private Event event;          // 🔴 REQUIRED
+
+//     private Instant timestamp;
+
+//     public Long getId() {
+//         return id;
+//     }
+
+//     public Event getEvent() {     // 🔴 REQUIRED
+//         return event;
+//     }
+
+//     public void setEvent(Event event) {
+//         this.event = event;
+//     }
+
+//     public Instant getTimestamp() {
+//         return timestamp;
+//     }
+
+//     public void setTimestamp(Instant timestamp) {
+//         this.timestamp = timestamp;
+//     }
+// }
+
+
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
@@ -733,15 +772,29 @@ public class EventUpdate {
     private Long id;
 
     @ManyToOne
-    private Event event;          // 🔴 REQUIRED
+    private Event event;
 
     private Instant timestamp;
+
+    // 🔴 Fields required ONLY for tests
+    private Long u1;
+    private Long u2;
+
+    @Enumerated(EnumType.STRING)
+    private SeverityLevel severityLevel;
+
+    // ================= REQUIRED METHODS =================
 
     public Long getId() {
         return id;
     }
 
-    public Event getEvent() {     // 🔴 REQUIRED
+    // 🔴 REQUIRED by tests
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Event getEvent() {
         return event;
     }
 
@@ -755,5 +808,28 @@ public class EventUpdate {
 
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
+    }
+
+    // 🔴 REQUIRED by tests
+    public void setU1(Long u1) {
+        this.u1 = u1;
+    }
+
+    // 🔴 REQUIRED by tests
+    public void setU2(Long u2) {
+        this.u2 = u2;
+    }
+
+    // 🔴 REQUIRED by tests
+    public void setSeverityLevel(SeverityLevel severityLevel) {
+        this.severityLevel = severityLevel;
+    }
+
+    // 🔴 REQUIRED lifecycle method
+    @PrePersist
+    public void onCreate() {
+        if (this.timestamp == null) {
+            this.timestamp = Instant.now();
+        }
     }
 }
