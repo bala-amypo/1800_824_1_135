@@ -55,7 +55,7 @@ public class User{
     public String getPassword() {
          return password;
           }
-    public String getRole() {
+    public Role getRole() {
          return role;
           }
     public Timestamp getCreatedAt() {
@@ -74,7 +74,7 @@ public class User{
     public void setPassword(String password) { 
         this.password = password; 
         }
-    public void setRole(String role) { 
+    public void setRole(Role role) { 
         this.role = role; 
         }
 
