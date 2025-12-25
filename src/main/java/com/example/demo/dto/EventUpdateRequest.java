@@ -1,13 +1,3 @@
-// package com.example.demo.dto;
-
-
-
-// public class EventUpdateRequest
-// {
-    
-// }
-
-
 package com.example.demo.dto;
 
 import com.example.demo.entity.SeverityLevel;
