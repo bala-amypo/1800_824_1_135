@@ -44,6 +44,22 @@
 
 //     List<Subscription> findByUserId(Long userId);
 // }
+// package com.example.demo.repository;
+
+// import com.example.demo.entity.Subscription;
+// import org.springframework.data.jpa.repository.JpaRepository;
+
+// import java.util.List;
+
+// public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
+
+//     boolean existsByUserIdAndEventId(Long userId, Long eventId);
+
+//     void deleteByUserIdAndEventId(Long userId, Long eventId);
+
+//     List<Subscription> findByUserId(Long userId);
+// }
+
 package com.example.demo.repository;
 
 import com.example.demo.entity.Subscription;
@@ -53,10 +69,16 @@ import java.util.List;
 
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
 
-    boolean existsByUserIdAndEventId(Long userId, Long eventId);
+    // ✅ REQUIRED BY TEST
+    List<Subscription> findByEventId(Long eventId);
 
+    // ✅ REQUIRED BY TEST
+    List<Subscription> findByUserId(Long userId);
+
+    // ✅ REQUIRED BY TEST
     void deleteByUserIdAndEventId(Long userId, Long eventId);
 
-    List<Subscription> findByUserId(Long userId);
+    // ✅ REQUIRED BY TEST
+    boolean existsByUserIdAndEventId(Long userId, Long eventId);
 }
 
