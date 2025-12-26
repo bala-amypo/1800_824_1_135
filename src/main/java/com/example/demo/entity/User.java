@@ -35,6 +35,7 @@ public class User {
         this.createdAt = Instant.now();
 
 
+
         if (this.role == null) {
             this.role = Role.SUBSCRIBER;
         }
