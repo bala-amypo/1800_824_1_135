@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // 🔴 EXACT constructor expected by tests
+
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService {
             throw new BadRequestException("Email already registered");
         }
 
-        // 🔴 REQUIRED BY TEST
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return userRepository.save(user);
