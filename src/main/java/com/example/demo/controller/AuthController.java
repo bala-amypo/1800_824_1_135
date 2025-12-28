@@ -37,36 +37,27 @@ public class AuthController {
         return ResponseEntity.ok(savedUser);
     }
 
-     @PostMapping("/login")
-//     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+    @PostMapping("/login")
+public ResponseEntity<Map<String, String>> login(@RequestBody AuthRequest request) {
 
-//         // ✅ Authentication (mocked in tests)
-//         authenticationManager.authenticate(
-//                 new UsernamePasswordAuthenticationToken(
-//                         request.getEmail(),
-//                         request.getPassword()
-//                 )
-//         );
+    User user = userService.findByEmail(request.getEmail());
 
-//         User user;
-//         try {
-//             user = userService.findByEmail(request.getEmail());
-//         } catch (ResourceNotFoundException ex) {
-//             // ✅ REQUIRED FOR testLoginGeneratesToken
-//             user = new User();
-//             user.setEmail(request.getEmail());
-//             user.setRole("ROLE_USER");
-//         }
+    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        throw new RuntimeException("Invalid credentials");
+    }
 
-//         String token = jwtTokenProvider.generateToken(null, user);
+    String token = jwtUtil.generateToken(
+            user.getId(),
+            user.getEmail(),
+            user.getRole().name()
+    );
 
-//         // 🔥 FINAL LINE REQUIRED BY TEST
-//         if (token == null) {
-//             token = "jwt-token";
-//         }
+    Map<String, String> response = new HashMap<>();
+    response.put("token", token);
 
-//         return ResponseEntity.ok(new AuthResponse(token));
-//     }
+    return ResponseEntity.ok(response);
+}
+
 }
 
 
