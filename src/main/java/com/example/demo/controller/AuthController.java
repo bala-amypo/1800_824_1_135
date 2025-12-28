@@ -106,10 +106,10 @@ public class AuthController {
         String token = jwtUtil.generateToken(
                 user.getId(),
                 user.getEmail(),
-                user.getRole().name()
+                user.getRole().name()   // ✅ FIXED (Role → String)
         );
 
-        return new AuthResponse(token); // ✅ REAL JWT
+        return new AuthResponse(token);
     }
 }
 
