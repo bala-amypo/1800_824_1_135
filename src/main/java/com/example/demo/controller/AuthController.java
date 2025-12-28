@@ -68,7 +68,7 @@ import com.example.demo.dto.AuthResponse;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.security.JwtTokenProvider;
+
 import com.example.demo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
