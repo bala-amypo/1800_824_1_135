@@ -24,27 +24,27 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-            // ❌ Disable CSRF for REST APIs
+             
             .csrf(csrf -> csrf.disable())
 
-            // ✅ Authorization rules
+            
             .authorizeHttpRequests(auth -> auth
 
-                // 🔓 Swagger URLs
+                
                 .requestMatchers(
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
                 ).permitAll()
 
-                // 🔓 Auth APIs
+                // 
                 .requestMatchers("/auth/**").permitAll()
 
-                // 🔒 Everything else needs JWT
+                //
                 .anyRequest().authenticated()
             )
 
-            // ✅ JWT Filter
+            //
             .addFilterBefore(
                     jwtAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class
@@ -53,13 +53,13 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ PasswordEncoder
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ AuthenticationManager
+    
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration config) throws Exception {

@@ -15,13 +15,13 @@ public class JwtUtil {
     private String secretKey;
     private int expirationMinutes;
 
-    // ✅ REQUIRED BY SPRING
+    
     public JwtUtil() {
         this.secretKey = "mysecretkeymysecretkeymysecretkey";
         this.expirationMinutes = 60;
     }
 
-    // ✅ REQUIRED BY TEST CASES
+    
     public JwtUtil(String secretKey, int expirationMinutes) {
         this.secretKey = secretKey;
         this.expirationMinutes = expirationMinutes;
@@ -31,7 +31,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
-    // ✅ USED BY CONTROLLER
+    
     public String generateToken(Long userId, String email, String role) {
 
         return Jwts.builder()
@@ -47,7 +47,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ USED BY FILTER & TESTS
+    
     public boolean validateToken(String token) {
         try {
             getClaims(token);
@@ -57,17 +57,17 @@ public class JwtUtil {
         }
     }
 
-    // ✅ REQUIRED BY TESTS
+    
     public String getUsernameFromToken(String token) {
         return getClaims(token).getSubject();
     }
 
-    // ✅ REQUIRED BY TESTS
+    
     public Long getUserIdFromToken(String token) {
         return getClaims(token).get("userId", Long.class);
     }
 
-    // ✅ REQUIRED BY TESTS
+    
     public String getRoleFromToken(String token) {
         return getClaims(token).get("role", String.class);
     }
