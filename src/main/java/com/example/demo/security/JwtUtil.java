@@ -142,6 +142,11 @@ public class JwtUtil {
         this.expirationMinutes = expirationMinutes;
     }
 
+
+private Key getSigningKey() {
+    byte[] keyBytes = Decoders.BASE64.decode(secret); // ✅ now valid
+    return Keys.hmacShaKeyFor(keyBytes);
+}
     // ✅ USED BY CONTROLLER
     public String generateToken(Long userId, String email, String role) {
         return Jwts.builder()
