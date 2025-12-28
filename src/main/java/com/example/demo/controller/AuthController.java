@@ -43,8 +43,10 @@ public ResponseEntity<Map<String, String>> login(@RequestBody AuthRequest reques
 
     User user = userService.findByEmail(request.getEmail());
 
-    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-        throw new RuntimeException("Invalid credentials");
+    if (user == null || !passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("error", "Invalid email or password"));
     }
 
     String token = jwtUtil.generateToken(
@@ -53,10 +55,7 @@ public ResponseEntity<Map<String, String>> login(@RequestBody AuthRequest reques
             user.getRole().name()
     );
 
-    Map<String, String> response = new HashMap<>();
-    response.put("token", token);
-
-    return ResponseEntity.ok(response);
+    return ResponseEntity.ok(Map.of("token", token));
 }
 
 }
