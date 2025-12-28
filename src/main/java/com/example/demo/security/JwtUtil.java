@@ -127,22 +127,36 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "my-secret-key";
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+    private String secretKey;
+    private int expirationMinutes;
 
-    // ✅ MATCHES AuthController
+    // ✅ REQUIRED BY SPRING
+    public JwtUtil() {
+        this.secretKey = "default-secret-key";
+        this.expirationMinutes = 60;
+    }
+
+    // ✅ REQUIRED BY TESTS
+    public JwtUtil(String secretKey, int expirationMinutes) {
+        this.secretKey = secretKey;
+        this.expirationMinutes = expirationMinutes;
+    }
+
+    // ✅ USED BY CONTROLLER
     public String generateToken(Long userId, String email, String role) {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("userId", userId)
                 .claim("role", role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .setExpiration(
+                        new Date(System.currentTimeMillis() + expirationMinutes * 60L * 1000)
+                )
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
 
-    // ✅ REQUIRED BY JwtAuthenticationFilter
+    // ✅ USED BY FILTER
     public boolean validateToken(String token) {
         try {
             getClaims(token);
@@ -152,14 +166,24 @@ public class JwtUtil {
         }
     }
 
-    // ✅ REQUIRED BY JwtAuthenticationFilter
+    // ✅ USED BY FILTER
     public String getUsernameFromToken(String token) {
         return getClaims(token).getSubject();
     }
 
+    // ✅ REQUIRED BY TESTS
+    public Long getUserIdFromToken(String token) {
+        return getClaims(token).get("userId", Long.class);
+    }
+
+    // ✅ REQUIRED BY TESTS
+    public String getRoleFromToken(String token) {
+        return getClaims(token).get("role", String.class);
+    }
+
     private Claims getClaims(String token) {
         return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
+                .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody();
     }
