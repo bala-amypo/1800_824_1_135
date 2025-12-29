@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/recommendation")
+@RequestMapping("/api/subscriptions")
 @SecurityRequirement(name="bearerAuth")
 
 public class RecommendationController {

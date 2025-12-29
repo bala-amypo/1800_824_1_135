@@ -12,14 +12,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rewardrule")
+@RequestMapping("/api/events")
 @SecurityRequirement(name="bearerAuth")
 
-public class RewardRuleController {
+public class EventController {
 
     private final EventService eventService;
 
-    public RewardRuleController(EventService eventService) {
+    public EventController(EventService eventService) {
         this.eventService = eventService;
     }
 
