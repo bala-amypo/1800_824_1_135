@@ -22,7 +22,7 @@ public class SwaggerConfig {
         return new OpenAPI()
 
                 .info(new Info()
-                        .title("Credit Card Reward Maximizer")
+                        .title("Volunteer Skill Matcher-Backend Overview")
                         .version("1.0")
                         .description("JWT secured REST API"))
 
