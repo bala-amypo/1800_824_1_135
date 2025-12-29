@@ -22,7 +22,7 @@ public class PurchaseIntentController {
 
     private final EventUpdateService eventUpdateService;
 
-    public EventUpdateController(EventUpdateService eventUpdateService) {
+    public PurchaseIntentController(EventUpdateService eventUpdateService) {
         this.eventUpdateService = eventUpdateService;
     }
 

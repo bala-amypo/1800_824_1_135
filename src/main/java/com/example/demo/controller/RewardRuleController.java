@@ -15,11 +15,11 @@ import java.util.List;
 @RequestMapping("/events")
 @SecurityRequirement(name="bearerAuth")
 
-public class InteractionController {
+public class RewardRuleController {
 
     private final EventService eventService;
 
-    public InteractionController(EventService eventService) {
+    public RewardRuleController(EventService eventService) {
         this.eventService = eventService;
     }
 

@@ -13,11 +13,11 @@ import java.util.List;
 @RequestMapping("/api/subscriptions")
 @SecurityRequirement(name="bearerAuth")
 
-public class RuleController {
+public class RecommendationController {
 
     private final SubscriptionService subscriptionService;
 
-    public RuleController(SubscriptionService subscriptionService) {
+    public RecommendationController(SubscriptionService subscriptionService) {
         this.subscriptionService = subscriptionService;
     }
 
