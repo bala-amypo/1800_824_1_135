@@ -12,10 +12,10 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/api/broadcasts")
 @SecurityRequirement(name="bearerAuth")
 
-public class CreditCardController {
+public class BroadcastLogController {
 
     private final BroadcastService broadcastService;
 
