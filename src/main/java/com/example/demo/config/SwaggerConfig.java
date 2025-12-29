@@ -22,7 +22,7 @@ public class SwaggerConfig {
         return new OpenAPI()
 
                 .info(new Info()
-                        .title("Digital Local Event Broadcasting API")
+                        .title("Credit Card R")
                         .version("1.0")
                         .description("JWT secured REST API"))
 
