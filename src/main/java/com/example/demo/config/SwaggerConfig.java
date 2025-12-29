@@ -22,7 +22,7 @@ public class SwaggerConfig {
         return new OpenAPI()
 
                 .info(new Info()
-                        .title("Credit Card R")
+                        .title("Credit Card Reward Maximizer")
                         .version("1.0")
                         .description("JWT secured REST API"))
 
