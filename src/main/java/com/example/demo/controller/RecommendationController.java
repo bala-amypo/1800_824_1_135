@@ -49,5 +49,5 @@ public class RecommendationController {
 //@DeleteMapping("/{eventId}")
 // public void unsubscribe(@RequestParam Long userId,
 //                           @PathVariable Long eventId) {
-//         subscriptionService.unsubscribe(userId, eventId);
-//     }
+//        subscriptionService.unsubscribe(userId, eventId);
+// }
