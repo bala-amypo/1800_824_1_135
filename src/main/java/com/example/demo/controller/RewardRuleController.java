@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/rewardrule")
 @SecurityRequirement(name="bearerAuth")
 
 public class RewardRuleController {

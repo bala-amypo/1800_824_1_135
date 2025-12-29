@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/subscriptions")
+@RequestMapping("/api/recommendation")
 @SecurityRequirement(name="bearerAuth")
 
 public class RecommendationController {
@@ -29,11 +29,7 @@ public class RecommendationController {
     }
 
    
-    @DeleteMapping("/{eventId}")
-    public void unsubscribe(@RequestParam Long userId,
-                            @PathVariable Long eventId) {
-        subscriptionService.unsubscribe(userId, eventId);
-    }
+  
 
   
     @GetMapping("/user/{userId}")
@@ -48,3 +44,10 @@ public class RecommendationController {
         return subscriptionService.isSubscribed(userId, eventId);
     }
 }
+
+
+//@DeleteMapping("/{eventId}")
+// public void unsubscribe(@RequestParam Long userId,
+//                           @PathVariable Long eventId) {
+//         subscriptionService.unsubscribe(userId, eventId);
+//     }

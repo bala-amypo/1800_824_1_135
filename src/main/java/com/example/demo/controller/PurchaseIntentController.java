@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/updates")
+@RequestMapping("/api/purchae-intents")
 @SecurityRequirement(name="bearerAuth")
 
 public class PurchaseIntentController {
