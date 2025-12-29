@@ -15,11 +15,11 @@ import java.util.List;
 @RequestMapping("/api/broadcasts")
 @SecurityRequirement(name="bearerAuth")
 
-public class BroadcastController {
+public class CatalogController {
 
     private final BroadcastService broadcastService;
 
-    public BroadcastController(BroadcastService broadcastService) {
+    public CatalogController(BroadcastService broadcastService) {
         this.broadcastService = broadcastService;
     }
 
