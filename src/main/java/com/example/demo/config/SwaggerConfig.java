@@ -19,7 +19,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
 
-        return new OpenAPI()
+        return new OpenAPI() 
 
                 .info(new Info()
                         .title("Volunteer Skill Matcher-Backend Overview")
