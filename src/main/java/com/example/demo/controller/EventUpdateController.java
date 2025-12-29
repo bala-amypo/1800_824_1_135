@@ -15,14 +15,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/purchae-intents")
+@RequestMapping("/api/updates")
 @SecurityRequirement(name="bearerAuth")
 
-public class PurchaseIntentController {
+public class EventUpdateController {
 
     private final EventUpdateService eventUpdateService;
 
-    public PurchaseIntentController(EventUpdateService eventUpdateService) {
+    public EventUpdateController(EventUpdateService eventUpdateService) {
         this.eventUpdateService = eventUpdateService;
     }
 

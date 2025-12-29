@@ -19,7 +19,7 @@ public class BroadcastLogController {
 
     private final BroadcastService broadcastService;
 
-    public CreditCardController(BroadcastService broadcastService) {
+    public BroadcastLogController(BroadcastService broadcastService) {
         this.broadcastService = broadcastService;
     }
 
