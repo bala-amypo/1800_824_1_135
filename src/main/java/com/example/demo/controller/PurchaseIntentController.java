@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/updates")
 @SecurityRequirement(name="bearerAuth")
 
-public class EventUpdateController {
+public class PurchaseIntentController {
 
     private final EventUpdateService eventUpdateService;
 
