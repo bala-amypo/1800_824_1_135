@@ -22,7 +22,7 @@ public class SwaggerConfig {
         return new OpenAPI() 
 
                 .info(new Info()
-                        .title("Volunteer Skill Matcher-Backend Overview")
+                        .title("Warranty Claim Fraud Detector")
                         .version("1.0")
                         .description("JWT secured REST API"))
 
